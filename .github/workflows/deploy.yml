@@ -1,50 +1,37 @@
-name: Deploy
-on:
-  push:
-    branches:
-      master
+name: ci
+
+on: [push, pull_request]
+
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build:
+    name: ${{ matrix.kind }} ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, ubuntu-latest, windows-latest]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: Setup Deno
+        uses: denolib/setup-deno@master
         with:
-          persist-credentials: false
+          deno-version: 1.1.0
 
-      - name: Cache cargo bin
-        uses: actions/cache@v1
-        with:
-          path: ~/.cargo/bin
-          key: ${{ runner.os }}-cargo-bin-${{ hashFiles('~/.cargo/.crates2.json') }}
-      
-      - name: Install mdbook
-        run: (test -x ~/.cargo/bin/mdbook || cargo install mdbook)
+      - name: Format
+        run: deno fmt --check
 
-      - name: Render
+      - name: Build
         run: |
-          cd deno_docs_zh_CN
-          mdbook build
-          cd book
-          cd ..
-
-      - name: Fix favicon # FIXME when mdbook supports favicon.svg
-        run: |
-          cd deno_docs_zh_CN/book
-          sed -e "s/favicon.png/favicon.svg/g" index.html > out
-          mv out index.html
-          cp ../theme/favicon.svg ./
-          cd ../..
-
-      - name: Debug
-        run: |
-          ls deno_docs_zh_CN/book
+          deno run --unstable --allow-read --allow-write --allow-net https://deno.land/x/pagic@0.7.8/mod.ts build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        if: |
+          startsWith(matrix.os, 'ubuntu') &&
+          github.ref == 'refs/heads/master' &&
+          github.event_name == 'push' &&
+          github.repository == 'denocn/deno_manual'
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: deno_docs_zh_CN/book # The folder the action should deploy.
-          CLEAN: true
-          DEBUG: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: manual.deno.js.cn
