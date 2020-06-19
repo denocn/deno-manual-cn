@@ -1,8 +1,8 @@
-## 安装
+# 安装
 
 Deno 能够在 macOS、Linux 和 Windows 上运行。Deno 是一个单独的可执行文件，它没有额外的依赖。
 
-### 下载安装
+## 下载安装
 
 [deno_install](https://github.com/denoland/deno_install) 提供了方便的脚本，用以下载安装 Deno.
 
@@ -44,7 +44,7 @@ cargo install deno
 
 Deno 也可以手动安装，只需从 [github.com/denoland/deno/releases](https://github.com/denoland/deno/releases) 下载一个 zip 文件。它仅包含一个单独的可执行文件。在 macOS 和 Linux 上，您需要为它设置执行权限。
 
-### 测试安装
+## 测试安装
 
 运行 `deno --version`，如果它打印出 Deno 版本，说明安装成功。
 
@@ -52,7 +52,7 @@ Deno 也可以手动安装，只需从 [github.com/denoland/deno/releases](https
 
 运行 `deno help <subcommand>` 以查看子命令的选项。
 
-### 升级
+## 升级
 
 要升级已安装的版本，运行：
 
@@ -69,6 +69,6 @@ deno upgrade --version 1.0.1
 ```
 
 
-### 从源码构建
+## 从源码构建
 
 关于构建步骤的信息请查阅 [贡献](../contributing.md) 章节。

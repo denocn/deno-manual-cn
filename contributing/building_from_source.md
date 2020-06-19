@@ -1,8 +1,8 @@
-## 从源码构建
+# 从源码构建
 
 以下是从源码构建 Deno 的操作步骤。如果您只是想使用 Deno，您可以下载一个预构建的可执行文件，参考 `入门` 章节。
 
-### 克隆 Deno 仓库
+## 克隆 Deno 仓库
 
 Linux 或 Mac 系统：
 
@@ -24,7 +24,7 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
    git clone --recurse-submodules https://github.com/denoland/deno.git
    ```
 
-### 前置条件
+## 前置条件
 
 最简单的方式是使用预编译的 V8 ：
 
@@ -72,7 +72,7 @@ V8_FROM_SOURCE=1 cargo build -vv
 
 有关构建 V8 的更多细节请查阅 [rusty_v8's README](https://github.com/denoland/rusty_v8)
 
-### 构建
+## 构建
 
 使用 Cargo：
 

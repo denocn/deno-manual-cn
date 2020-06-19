@@ -1,6 +1,6 @@
-## 测试和工具
+# 测试和工具
 
-### 测试
+## 测试
 
 测试 `deno`:
 
@@ -18,7 +18,7 @@ cargo test js_unit_tests
 cargo test std_tests
 ```
 
-### 代码检查与格式化
+## 代码检查与格式化
 
 检查
 
@@ -32,7 +32,7 @@ cargo test std_tests
 ./tools/format.py
 ```
 
-### 性能分析
+## 性能分析
 
 ```sh
 # 确认我们正在构建发布版 (release)。
@@ -80,9 +80,9 @@ isolate-0x7fad98242400-v8.log --preprocess > prof.json
 - [https://v8.dev/docs/d8](https://v8.dev/docs/d8)
 - [https://v8.dev/docs/profile](https://v8.dev/docs/profile)
 
-### 使用 LLDB 调试
+## 使用 LLDB 调试
 
-### Debugging with LLDB
+## Debugging with LLDB
 
 ```shell
 $ lldb -- target/debug/deno run tests/worker.js
@@ -111,7 +111,7 @@ Current executable set to '../deno/target/debug/deno' (x86_64).
 (lldb) r
 ```
 
-### V8 选项
+## V8 选项
 
 V8 有很多内部的命令行选项。
 
@@ -129,7 +129,7 @@ $ deno --v8-flags=--expose-gc,--use-strict
 --async-stack-trace
 ```
 
-### 持续的性能测试
+## 持续的性能测试
 
 参考我们的测试 [https://deno.land/benchmarks](https://deno.land/benchmarks)
 

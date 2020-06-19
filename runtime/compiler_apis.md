@@ -1,11 +1,11 @@
-## 编译器 API
+# 编译器 API
 
 > 这是一个不稳定的 Deno 特性。
 > 更多信息请查阅 [稳定性](stability.md)
 
 Deno 支持对内置 TypeScript 编译器的运行时访问。`Deno` 命名空间中有三种方法提供此访问。
 
-### `Deno.compile()`
+## `Deno.compile()`
 
 这类似于 `deno cache`，因为它可以获取代码、缓存代码、编译代码，但不运行代码。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。
 
@@ -41,7 +41,7 @@ const [diagnostics, emitMap] = await Deno.compile(
 
 在这种情况下，`emitMap` 将包含一个 `console.log()` 语句。
 
-### `Deno.bundle()`
+## `Deno.bundle()`
 
 这与 `deno bundle` 在命令行上的工作非常相似。 它也与 `Deno.compile()` 类似，只是它不返回文件映射，而是只返回一个字符串，这是一个自包含的 JavaScript ES 模块，它将包含提供或解析的所有代码，以及提供的根模块的所有导出。它最多接受三个参数，`rootName`、可选的 `sources` 和可选的 `options`。
 
@@ -75,7 +75,7 @@ const [diagnostics, emit] = await Deno.bundle(
 
 在这种情况下，`emit` 将是一个自包含的 JavaScript ES 模块，并解析了所有依赖项，导出与源模块相同的导出。
 
-### `Deno.transpileOnly()`
+## `Deno.transpileOnly()`
 
 这是基于 TypeScript 函数 `transpileModule()` 的。所有这些操作都会“擦除”模块中的任何类型并释放 JavaScript。没有类型检查和依赖关系的解析。它最多接受两个参数，第一个参数是哈希表，其中键是模块名称，值是内容。模块名称的唯一用途是在将信息放入源映射时，显示源文件名称是什么。第二个参数包含 `Deno.CompilerOptions` 类型的可选 `options`。函数通过映射解析，其中键是提供的源模块名称，值是具有 `source` 属性和可选 `map` 属性的对象。第一个是模块的输出内容。 `map` 属性是源映射。源映射是默认提供的，但可以通过 `options` 参数关闭。
 
@@ -92,7 +92,7 @@ console.log(result["/foo.ts"].map);
 
 我们期望 `enum` 被重写成一个构造可枚举的 IIFE，并且映射被定义。
 
-### 引用 TypeScript 库文件
+## 引用 TypeScript 库文件
 
 当您使用 `deno run` 或其他 TypeScript 类型的 Deno 命令时，该代码将根据描述 Deno 支持的环境的自定义库进行评估。默认情况下，TypeScript 类型的编译器运行时 API 也使用这些库（`Deno.compile()` 和 `Deno.bundle()`）。
 
@@ -115,7 +115,7 @@ const [errors, emitted] = await Deno.compile(
 
 就像 `tsc` 一样，当您提供一个 `lib` 编译器选项时，它会覆盖默认的选项，这意味着基本的 JavaScript 库不会被包含，而您应该包含最能代表您的目标运行时的选项（例如 `es5`，`es2015`，`es2016`，`es2017`，`es2018`，`es2019`，`es2020` 或 `esnext`）。
 
-#### 包含 Deno 命名空间
+### 包含 Deno 命名空间
 
 除了 TypeScript 提供的库之外，还有四个内置在 Deno 中的库可以引用:
 
@@ -140,7 +140,7 @@ const [errors, emitted] = await Deno.compile(
 
 **注意**，Deno 命名空间需要一个 ES2018 或更新的运行时环境。这意味着，如果您使用的库“低于” ES2018，那么您将得到编译过程中输出的错误。
 
-#### 使用三斜杠引用（triple-slash reference）
+### 使用三斜杠引用（triple-slash reference）
 
 您不必在编译器选项中指定 `lib`。Deno 支持[对库的三斜杠引用](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-lib-)，并可以嵌入到文件的内容中。举个例子，如果你有一个 `main.ts`：
 

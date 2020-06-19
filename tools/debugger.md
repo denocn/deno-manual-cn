@@ -1,4 +1,4 @@
-## 调试器 (debugger)
+# 调试器 (debugger)
 
 Deno 支持 [V8 Inspector Protocol](https://v8.dev/docs/inspector).
 
@@ -8,7 +8,7 @@ Deno 支持 [V8 Inspector Protocol](https://v8.dev/docs/inspector).
 
 `--inspect` 选项允许在任何时间点连接调试器，而 `--inspect-brk` 选项会等待调试器连接，在第一行代码处暂停执行。
 
-### Chrome Devtools
+## Chrome Devtools
 
 让我们用 Chrome 开发者工具来调试一个程序，我们将使用来自 `std` 的 [file_server.ts](https://deno.land/std@v0.50.0/http/file_server.ts)，这是一个静态文件服务。
 
@@ -56,7 +56,7 @@ $ curl http://0.0.0.0:4500/
 
 在这时，我们可以检查请求的内容，逐步调试代码。
 
-### VSCode
+## VSCode
 
 Deno 可以在 VSCode 中调试。
 
@@ -101,15 +101,15 @@ for await (const req of server) {
 
 ![VSCode debugger](../images/debugger7.jpg)
 
-### JetBrains IDE
+## JetBrains IDE
 
 您可以使用 JetBrains IDE 来调试 Deno，右击您想要调试的文件，选择 `Debug 'Deno: <file name>'`。这会创建一个没有权限设置的 运行/调试 配置，您可能需要更改 `Arguments` 字段来提供所需权限。
 
-### 其他
+## 其他
 
 实现 Devtools 协议的任何客户端都能连接 Deno 进程。
 
-### 限制
+## 限制
 
 开发者工具的支持仍不成熟，有一些功能是缺失的，或是有 bug 的：
 

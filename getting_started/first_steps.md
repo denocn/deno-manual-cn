@@ -1,10 +1,10 @@
-## 第一步
+# 第一步
 
 这个页面包含一些示例，您可以从中学到 Deno 的基本概念。
 
 我们假设您已经对 JavaScript 有过预先的了解，特别是 `async`/`await`。如果您没有了解过 JavaScript，您可能需要先阅读这个指南：[JavaScript](https://developer.mozilla.org/zh-CN/docs/learn/JavaScript).
 
-### Hello World
+## Hello World
 
 Deno 是一个 JavaScript 和 TypeScript 的运行时，并尝试与浏览器兼容并使用现代的功能 (features)。
 
@@ -20,7 +20,7 @@ console.log("Welcome to Deno 🦕");
 deno run https://deno.land/std/examples/welcome.ts
 ```
 
-### 发出一个 HTTP 请求
+## 发出一个 HTTP 请求
 
 通过 HTTP 请求从服务器获取数据是一件很常见的事。让我们编写一个简单的程序来获取文件并打印到终端。
 
@@ -58,7 +58,7 @@ deno run https://deno.land/std/examples/curl.ts https://example.com
 deno run --allow-net=example.com https://deno.land/std/examples/curl.ts https://example.com
 ```
 
-### 读取一个文件
+## 读取一个文件
 
 Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以在此找到相关文档：[doc.deno.land](https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts)。
 
@@ -68,12 +68,12 @@ Deno 也提供内置的 API，它们都位于全局变量 `Deno` 中。您可以
 
 {{#include ../examples/unix_cat.md:2:}}
 
-### TCP 服务
+## TCP 服务
 
 示例：[TCP echo](../examples/tcp_echo.md)
 
 {{#include ../examples/tcp_echo.md:2:}}
 
-### 更多示例
+## 更多示例
 
 您可以在 [示例](../examples.md) 一章找到更多示例。

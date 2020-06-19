@@ -1,4 +1,4 @@
-## Worker
+# Worker
 
 Deno 支持 [Web Worker API](https://developer.mozilla.org/zh-CN/docs/Web/API/Worker/Worker).
 
@@ -15,7 +15,7 @@ new Worker("./worker.js");
 new Worker("./worker.js", { type: "classic" });
 ```
 
-### 权限
+## 权限
 
 创建一个新的 `Worker` 实例的行为与动态导入类似，因此 Deno 需要适当的权限来做这个操作。
 
@@ -65,7 +65,7 @@ $ deno run --allow-net main.ts
 hello world
 ```
 
-### 在 Worker 中使用 Deno
+## 在 Worker 中使用 Deno
 
 > 这是一个不稳定的 Deno 特性。
 > 更多信息请查阅 [稳定性](stability.md)

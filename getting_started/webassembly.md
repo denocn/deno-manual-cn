@@ -1,4 +1,4 @@
-## WASM 支持
+# WASM 支持
 
 Deno 能够运行 [wasm](https://webassembly.org/) 二进制文件。
 

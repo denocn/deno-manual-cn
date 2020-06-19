@@ -1,4 +1,4 @@
-## 导入映射（Import maps）
+# 导入映射（Import maps）
 
 > 这是一个不稳定的特性。
 > 更多信息请查阅 [稳定性](../runtime/stability.md)

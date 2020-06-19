@@ -1,4 +1,4 @@
-## 权限
+# 权限
 
 默认情况下，Deno是安全的。因此 Deno 模块没有文件、网络或环境的访问权限，除非您为它授权。在命令行参数中为 deno 进程授权后才能访问安全敏感的功能。
 
@@ -8,7 +8,7 @@
 deno run --allow-read mod.ts
 ```
 
-### 权限列表
+## 权限列表
 
 以下权限是可用的：
 
@@ -21,7 +21,7 @@ deno run --allow-read mod.ts
 - **--allow-run** 允许运行子进程。请注意，子进程不在沙箱中运行，因此没有与 deno 进程相同的安全限制，请谨慎使用。
 - **--allow-write=\<allow-write\>** 允许写入文件系统。您可以指定一系列用逗号分隔的目录或文件，来提供文件系统白名单。
 
-### 权限白名单
+## 权限白名单
 
 Deno 还允许您使用白名单控制权限的粒度。
 
@@ -43,7 +43,7 @@ $ deno run --allow-read=/etc https://deno.land/std/examples/cat.ts /etc/passwd
 
 `--allow-write` 也一样，代表写入权限。
 
-### 网络访问
+## 网络访问
 
 _fetch.ts_:
 

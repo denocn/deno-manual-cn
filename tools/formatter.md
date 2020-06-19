@@ -1,4 +1,4 @@
-## 代码格式化
+# 代码格式化
 
 Deno 有着内置的格式化工具，能够格式化 TypeScript 和 JavaScript 代码。
 

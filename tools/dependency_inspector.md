@@ -1,4 +1,4 @@
-## 依赖检查器
+# 依赖检查器
 
 `deno info [URL]` 会列出 ES 模块和它的所有依赖。
 
@@ -63,7 +63,7 @@ https://deno.land/std@0.52.0/http/file_server.ts
 
 依赖检查器对本地或远程的任意 ES 模块都有效。
 
-## 缓存位置
+# 缓存位置
 
 `deno info` 可以用来显示与缓存位置有关的信息：
 

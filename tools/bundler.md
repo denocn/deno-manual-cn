@@ -1,4 +1,4 @@
-## 打包
+# 打包
 
 `deno bundle [URL]` 将输出一个单独的 JavaScript 文件，其中包含了它的所有依赖。
 

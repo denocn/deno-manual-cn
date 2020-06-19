@@ -1,4 +1,4 @@
-## 代理（Proxies）
+# 代理（Proxies）
 
 Deno 支持模块下载和 Web 标准 `fetch` API 的代理。
 
