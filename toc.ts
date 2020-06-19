@@ -40,9 +40,6 @@ export const toc: SidebarConfig = [
   },
   {
     link: "standard_library.md",
-    children: [
-      "standard_library/name.md",
-    ],
   },
   {
     link: "testing.md",
