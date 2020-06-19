@@ -2,7 +2,7 @@
 
 > 此版本更新于 2020 年 6 月 8 日
 
-点此阅读：[nugine.github.io/deno-manual-cn/](https://nugine.github.io/deno-manual-cn/)
+源仓库地址：https://github.com/Nugine/deno-manual-cn
 
 参与者：
 
