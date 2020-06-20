@@ -2,9 +2,11 @@
 
 > 此版本更新于 2020 年 6 月 8 日
 
-源仓库地址：https://github.com/Nugine/deno-manual-cn
+Deno 中文手册由 [@Nugine](https://github.com/Nugine) 主导翻译，源仓库地址：<https://github.com/Nugine/deno-manual-cn>。
 
-参与者：
+当前仓库不负责任何翻译工作，只是作为镜像，并使用 [Pagic](https://github.com/xcatliu/pagic) 构建文档站点，部署在 <https://manual.deno.js.cn>。
+
+## 参与者
 
 - [@Nugine](https://github.com/Nugine)
 - [@sbwww](https://github.com/sbwww)
@@ -12,9 +14,9 @@
 - [@gylidian](https://github.com/gylidian)
 - [@justjavac](https://github.com/justjavac)
 
-## 如何参与改进？
+## 勘误
 
-勘误：<https://github.com/Nugine/deno-manual-cn/issues/new/choose>
+请移步源仓库进行勘误：<https://github.com/Nugine/deno-manual-cn/issues/new/choose>
 
 ## 协议
 
