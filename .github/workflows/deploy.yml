@@ -22,7 +22,7 @@ jobs:
 
       - name: Build
         run: |
-          deno run --unstable --allow-read --allow-write --allow-net https://deno.land/x/pagic@0.7.8/mod.ts build
+          deno run --unstable --allow-read --allow-write --allow-net https://deno.land/x/pagic@0.7.9/mod.ts build
 
       - name: Deploy
         if: |
