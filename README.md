@@ -1,6 +1,6 @@
 # Deno 中文手册
 
-> 此版本更新于 2020 年 6 月 8 日
+> 此版本更新于 2020 年 7 月 12 日 [deno @ 871f925](https://github.com/denoland/deno/tree/871f9255e37b4d2e63439c84da8e9bed6b388034)
 
 Deno 中文手册由 [@Nugine](https://github.com/Nugine) 主导翻译，源仓库地址：<https://github.com/Nugine/deno-manual-cn>。
 
