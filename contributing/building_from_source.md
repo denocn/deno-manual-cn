@@ -26,6 +26,24 @@ git clone --recurse-submodules https://github.com/denoland/deno.git
 
 ## 前置条件
 
+您需要 [安装 Rust](https://www.rust-lang.org/tools/install)。Deno 不支持每晚版本(nightly) 构建，请确定您获取的是最新的稳定版本(stable release)。
+
+检查以下工具是否已经安装：
+
+```
+rustc -V
+cargo -V
+```
+
+## 设置 rust 的编译目标和组件
+
+```shell
+rustup target add wasm32-unknown-unknown
+rustup target add wasm32-wasi
+```
+
+## 构建 Deno
+
 最简单的方式是使用预编译的 V8 ：
 
 ```
@@ -42,11 +60,11 @@ V8_FROM_SOURCE=1 cargo build -vv
 
 [Python 2](https://www.python.org/downloads). 确认您的 `PATH` 环境变量中有一个无后缀 (suffix-less) 的 `python`/`python.exe`，并且它指向 Python 2，而不是 Python3 ([issue 464](https://github.com/denoland/deno/issues/464#issuecomment-411795578))。
 
-对于 Linux 用户，必须已经安装 glib-2.0 开发文件。（在 Ubuntu 上，运行 `apt install libglib2.0-dev`）
+Linux 用户：必须已经安装 glib-2.0 开发文件。（在 Ubuntu 上，运行 `apt install libglib2.0-dev`）
 
-对于 Mac 用户，必须已经安装 [XCode](https://developer.apple.com/xcode/) 。
+Mac 用户：必须已经安装 Command Line Tools。（[XCode](https://developer.apple.com/xcode/) 已经包含了 CLT。运行 `xcode-select --install` 来在没有 XCode 的情况下安装它。）
 
-对于 Windows 用户：
+Windows 用户：
 
 1. 安装 [VS Community 2019](https://www.visualstudio.com/downloads/)，安装 "Desktop development with C++" 工具包，确认以下工具都已被选中和安装。
 

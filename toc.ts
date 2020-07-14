@@ -15,6 +15,7 @@ export const toc: SidebarConfig = [
       "getting_started/installation.md",
       "getting_started/setup_your_environment.md",
       "getting_started/first_steps.md",
+      "getting_started/command_line_interface.md",
       "getting_started/permissions.md",
       "getting_started/typescript.md",
       "getting_started/webassembly.md",
@@ -43,6 +44,9 @@ export const toc: SidebarConfig = [
   },
   {
     link: "testing.md",
+    children: [
+      "testing/assertions.md",
+    ],
   },
   {
     link: "tools.md",
@@ -53,6 +57,7 @@ export const toc: SidebarConfig = [
       "tools/bundler.md",
       "tools/documentation_generator.md",
       "tools/dependency_inspector.md",
+      "tools/linter.md",
     ],
   },
   {

@@ -2,7 +2,7 @@
 
 > <a href="https://github.com/Nugine/deno-manual-cn/" rel="noopener noreferrer" target="_blank" style="display:inline-flex;align-items:center"><span style="margin-right:1em">deno-manual-cn</span><img alt="GitHub stars" src="https://img.shields.io/github/stars/Nugine/deno-manual-cn?style=social"> </a>
 > 
-> 此版本更新于 2020 年 6 月 8 日 [deno @ 62adc63](https://github.com/denoland/deno/tree/62adc63934d8be52b90512ad0e8165d9dd36eafc)
+> 此版本更新于 2020 年 7 月 12 日 [deno @ 871f925](https://github.com/denoland/deno/tree/871f9255e37b4d2e63439c84da8e9bed6b388034)
 
 Deno 是一个 JavaScript/TypeScript 的运行时，默认使用安全环境执行代码，有着卓越的开发体验。
 
@@ -64,15 +64,3 @@ Deno 明确地承担了运行时和包管理器的角色。它使用标准的浏
 - 远程代码在第一次运行时获取并缓存，直到代码通过 `--reload` 选项运行。（所以它在飞机上也能工作）
 
 - 从远程 URL 加载的模块或文件应当是不可变且可缓存的。
-
-## 图标
-
-这些 Deno 图标在 MIT 协议下分发（公共领域，免费使用），例如 Deno 软件。
-
-- [手绘 by @ry](https://deno.land/images/deno_logo.png)
-
-- [动画 by @hashrock](https://github.com/denolib/animated-deno-logo/)
-
-- [高精度 SVG by @kevinkassimo](https://github.com/denolib/high-res-deno-logo)
-
-- [像素动画 by @tanakaworld](https://deno.land/images/deno_logo_4.gif)
