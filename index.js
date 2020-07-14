@@ -3,21 +3,26 @@ let lastPathname = null;
 let lastLayout = null;
 let lastProps = null;
 
+async function clickHandler(e) {
+  const { origin, pathname } = e.target;
+  if (typeof pathname !== 'string') return;
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  if (origin !== location.origin) return;
+  await rerender(e.target, {
+    preventDefault: () => e.preventDefault(),
+    pushState: () => window.history.pushState({}, '', e.target.href)
+  });
+}
+
+function popstateHandler() {
+  rerender(location);
+}
+
 async function main() {
   rerender(location, { isHydrate: true });
 
-  document.addEventListener('click', async (e) => {
-    const { origin, pathname } = e.target;
-    if (typeof pathname !== 'string') return;
-    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
-    if (origin !== location.origin) return;
-    await rerender(e.target, {
-      preventDefault: () => e.preventDefault(),
-      pushState: () => window.history.pushState({}, '', e.target.href)
-    });
-  });
-
-  window.addEventListener('popstate', () => rerender(location));
+  document.addEventListener('click', clickHandler);
+  window.addEventListener('popstate', popstateHandler);
 }
 
 async function rerender(
@@ -37,12 +42,13 @@ async function rerender(
   }
   loading = true;
   if (!isHydrate) {
+    // If render not complete in 0.1s, render a loading icon instead.
     setTimeout(() => {
       if (loading === false) return;
       ReactDOM.render(
         React.createElement(lastLayout, {
           ...lastProps,
-          content: React.createElement('article', { className: 'loading' }, 'Loading...')
+          loading: true
         }),
         document
       );
@@ -71,4 +77,12 @@ async function rerender(
   loading = false;
 }
 
-main();
+try {
+  main();
+} catch (e) {
+  console.error(e);
+  console.log('Error occured, disable spa.');
+
+  document.removeEventListener('click', clickHandler);
+  window.removeEventListener('popstate', popstateHandler);
+}
