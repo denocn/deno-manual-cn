@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -133,16 +138,16 @@ export default {
     'pagePath': "examples/file_system_events.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "examples/file_system_events.html",
-    'title': undefined,
+    'title': "文件系统事件",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h2 id="%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6">文件系统事件<a class="anchor" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6">§</a></h2>\n<p>轮询文件系统事件：</p>\n<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">watchFs</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span class="token keyword">const</span> event <span class="token keyword">of</span> watcher<span class="token punctuation">)</span> <span class="token punctuation">{</span>\n  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">">>>> event"</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>\n  <span class="token comment">// { kind: "create", paths: [ "/foo.txt" ] }</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<p>请注意，事件的确切顺序可能因操作系统而异。</p>\n<p>此功能根据平台使用不同的系统调用：</p>\n<ul>\n<li>Linux: inotify</li>\n<li>macOS: FSEvents</li>\n<li>Windows: ReadDirectoryChangesW</li>\n</ul>\n'
+            __html: '<h1>文件系统事件</h1>\n<p>轮询文件系统事件：</p>\n<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> watcher <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">watchFs</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span class="token keyword">const</span> event <span class="token keyword">of</span> watcher<span class="token punctuation">)</span> <span class="token punctuation">{</span>\n  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">">>>> event"</span><span class="token punctuation">,</span> event<span class="token punctuation">)</span><span class="token punctuation">;</span>\n  <span class="token comment">// { kind: "create", paths: [ "/foo.txt" ] }</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<p>请注意，事件的确切顺序可能因操作系统而异。</p>\n<p>此功能根据平台使用不同的系统调用：</p>\n<ul>\n<li>Linux: inotify</li>\n<li>macOS: FSEvents</li>\n<li>Windows: ReadDirectoryChangesW</li>\n</ul>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js" }),
         React.createElement("script", { src: "/main.js", type: "module" })),
     'toc': React.createElement("aside", { dangerouslySetInnerHTML: {
-            __html: '<nav class="toc"><ol><li><a href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%BA%8B%E4%BB%B6">文件系统事件</a></li></ol></nav>'
+            __html: '<nav class="toc"><ol></ol></nav>'
         } }),
     'sidebar': [
         {
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

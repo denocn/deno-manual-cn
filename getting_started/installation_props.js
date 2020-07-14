@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "getting_started/installation.html",
     'title': "安装",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>安装</h1>\n<p>Deno 能够在 macOS、Linux 和 Windows 上运行。Deno 是一个单独的可执行文件，它没有额外的依赖。</p>\n<h2 id="%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">下载安装<a class="anchor" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">§</a></h2>\n<p><a href="https://github.com/denoland/deno_install">deno_install</a> 提供了方便的脚本，用以下载安装 Deno.</p>\n<p>使用 Shell (macOS 和 Linux):</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">curl</span> -fsSL <a class="token url-link" href="https://deno.land/x/install/install.sh">https://deno.land/x/install/install.sh</a> <span class="token operator">|</span> <span class="token function">sh</span>\n</code></pre>\n<p>使用 PowerShell (Windows):</p>\n<pre class="language-shell"><code class="language-shell">iwr <a class="token url-link" href="https://deno.land/x/install/install.ps1">https://deno.land/x/install/install.ps1</a> -useb <span class="token operator">|</span> iex\n</code></pre>\n<p>使用 <a href="https://scoop.sh/">Scoop</a> (Windows):</p>\n<pre class="language-shell"><code class="language-shell">scoop <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://chocolatey.org/packages/deno">Chocolatey</a> (Windows):</p>\n<pre class="language-shell"><code class="language-shell">choco <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://formulae.brew.sh/formula/deno">Homebrew</a> (macOS):</p>\n<pre class="language-shell"><code class="language-shell">brew <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://crates.io/crates/deno">Cargo</a> (Windows, macOS, Linux):</p>\n<pre class="language-shell"><code class="language-shell">cargo <span class="token function">install</span> deno\n</code></pre>\n<p>Deno 也可以手动安装，只需从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 下载一个 zip 文件。它仅包含一个单独的可执行文件。在 macOS 和 Linux 上，您需要为它设置执行权限。</p>\n<h2 id="%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85">测试安装<a class="anchor" href="#%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85">§</a></h2>\n<p>运行 <code>deno --version</code>，如果它打印出 Deno 版本，说明安装成功。</p>\n<p>运行 <code>deno help</code> 以查看帮助文档。</p>\n<p>运行 <code>deno help &lt;subcommand&gt;</code> 以查看子命令的选项。</p>\n<h2 id="%E5%8D%87%E7%BA%A7">升级<a class="anchor" href="#%E5%8D%87%E7%BA%A7">§</a></h2>\n<p>要升级已安装的版本，运行：</p>\n<pre class="language-shell"><code class="language-shell">deno upgrade\n</code></pre>\n<p>这会从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 获取最新的发布版本，然后解压并替换现有的版本。</p>\n<p>您也可以用此来安装一个特定的版本：</p>\n<pre class="language-shell"><code class="language-shell">deno upgrade --version <span class="token number">1.0</span>.1\n</code></pre>\n<h2 id="%E4%BB%8E%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA">从源码构建<a class="anchor" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA">§</a></h2>\n<p>关于构建步骤的信息请查阅 <a href="../contributing.html">贡献</a> 章节。</p>\n'
+            __html: '<h1>安装</h1>\n<p>Deno 能够在 macOS、Linux 和 Windows 上运行。Deno 是一个单独的可执行文件，它没有额外的依赖。</p>\n<h2 id="%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">下载安装<a class="anchor" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85">§</a></h2>\n<p><a href="https://github.com/denoland/deno_install">deno_install</a> 提供了方便的脚本，用以下载安装 Deno.</p>\n<p>使用 Shell (macOS 和 Linux):</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">curl</span> -fsSL <a class="token url-link" href="https://deno.land/x/install/install.sh">https://deno.land/x/install/install.sh</a> <span class="token operator">|</span> <span class="token function">sh</span>\n</code></pre>\n<p>使用 PowerShell (Windows):</p>\n<pre class="language-shell"><code class="language-shell">iwr <a class="token url-link" href="https://deno.land/x/install/install.ps1">https://deno.land/x/install/install.ps1</a> -useb <span class="token operator">|</span> iex\n</code></pre>\n<p>使用 <a href="https://scoop.sh/">Scoop</a> (Windows):</p>\n<pre class="language-shell"><code class="language-shell">scoop <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://chocolatey.org/packages/deno">Chocolatey</a> (Windows):</p>\n<pre class="language-shell"><code class="language-shell">choco <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://formulae.brew.sh/formula/deno">Homebrew</a> (macOS):</p>\n<pre class="language-shell"><code class="language-shell">brew <span class="token function">install</span> deno\n</code></pre>\n<p>使用 <a href="https://crates.io/crates/deno">Cargo</a> (Windows, macOS, Linux):</p>\n<pre class="language-shell"><code class="language-shell">cargo <span class="token function">install</span> deno\n</code></pre>\n<p>Deno 也可以手动安装，只需从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 下载一个 zip 文件。它仅包含一个单独的可执行文件。在 macOS 和 Linux 上，您需要为它设置执行权限。</p>\n<h2 id="%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85">测试安装<a class="anchor" href="#%E6%B5%8B%E8%AF%95%E5%AE%89%E8%A3%85">§</a></h2>\n<p>运行 <code>deno --version</code>，如果它打印出 Deno 版本，说明安装成功。</p>\n<p>运行 <code>deno help</code> 以查看帮助文档。</p>\n<p>运行 <code>deno help &lt;subcommand&gt;</code> 以查看子命令的选项。</p>\n<p>CLI 的详细指南在 <a href="./command_line_interface.html">这里</a>。</p>\n<h2 id="%E5%8D%87%E7%BA%A7">升级<a class="anchor" href="#%E5%8D%87%E7%BA%A7">§</a></h2>\n<p>要升级已安装的版本，运行：</p>\n<pre class="language-shell"><code class="language-shell">deno upgrade\n</code></pre>\n<p>这会从 <a href="https://github.com/denoland/deno/releases">github.com/denoland/deno/releases</a> 获取最新的发布版本，然后解压并替换现有的版本。</p>\n<p>您也可以用此来安装一个特定的版本：</p>\n<pre class="language-shell"><code class="language-shell">deno upgrade --version <span class="token number">1.0</span>.1\n</code></pre>\n<h2 id="%E4%BB%8E%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA">从源码构建<a class="anchor" href="#%E4%BB%8E%E6%BA%90%E7%A0%81%E6%9E%84%E5%BB%BA">§</a></h2>\n<p>关于构建步骤的信息请查阅 <a href="../contributing.html">贡献</a> 章节。</p>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "contributing/architecture.html",
     'title': "内部细节",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>内部细节</h1>\n<h2 id="deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">Deno 和 Linux 类比<a class="anchor" href="#deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">§</a></h2>\n<table>\n<thead>\n<tr>\n<th style="text-align:right"><strong>Linux</strong></th>\n<th style="text-align:left"><strong>Deno</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style="text-align:right">进程 (Processes)</td>\n<td style="text-align:left">Web Workers</td>\n</tr>\n<tr>\n<td style="text-align:right">系统调用 (Syscalls)</td>\n<td style="text-align:left">Ops</td>\n</tr>\n<tr>\n<td style="text-align:right">文件描述符 (fd)</td>\n<td style="text-align:left"><a href="#resources">Resource ids (rid)</a></td>\n</tr>\n<tr>\n<td style="text-align:right">调度器 (Scheduler)</td>\n<td style="text-align:left">Tokio</td>\n</tr>\n<tr>\n<td style="text-align:right">用户空间: libc++ / glib / boost</td>\n<td style="text-align:left">https://deno.land/std/</td>\n</tr>\n<tr>\n<td style="text-align:right">/proc/$$/stat</td>\n<td style="text-align:left"><a href="#metrics">Deno.metrics()</a></td>\n</tr>\n<tr>\n<td style="text-align:right">手册页 (man pages)</td>\n<td style="text-align:left">deno types</td>\n</tr>\n</tbody>\n</table>\n<h3 id="%E8%B5%84%E6%BA%90-(resources)">资源 (Resources)<a class="anchor" href="#%E8%B5%84%E6%BA%90-(resources)">§</a></h3>\n<p>资源（Resources)，又称 <code>rid</code>，是 Deno 版本的文件描述符。它们是一些整数数值，用来指代打开的文件、套接字 (sockets) 和其他概念。基于 <code>rid</code>，Deno 能够查询系统中有多少个打开的资源，这在测试时很有用。</p>\n<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token punctuation">{</span> resources<span class="token punctuation">,</span> close <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">;</span>\n<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token function">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token comment">// { 0: "stdin", 1: "stdout", 2: "stderr" }</span>\n<span class="token function">close</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token function">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token comment">// { 1: "stdout", 2: "stderr" }</span>\n</code></pre>\n<h3 id="%E6%8C%87%E6%A0%87-(metrics)">指标 (Metrics)<a class="anchor" href="#%E6%8C%87%E6%A0%87-(metrics)">§</a></h3>\n<p>指标 (Metrics) 是 Deno 用于各种统计数据的内部计数器。</p>\n<pre class="language-shell"><code class="language-shell"><span class="token operator">></span> console.table<span class="token punctuation">(</span>Deno.metrics<span class="token punctuation">(</span><span class="token punctuation">))</span>\n┌──────────────────┬────────┐\n│     <span class="token punctuation">(</span>index<span class="token punctuation">)</span>      │ Values │\n├──────────────────┼────────┤\n│  opsDispatched   │   <span class="token number">9</span>    │\n│   opsCompleted   │   <span class="token number">9</span>    │\n│ bytesSentControl │  <span class="token number">504</span>   │\n│  bytesSentData   │   <span class="token number">0</span>    │\n│  bytesReceived   │  <span class="token number">856</span>   │\n└──────────────────┴────────┘\n</code></pre>\n<h2 id="%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">架构示意图<a class="anchor" href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">§</a></h2>\n<p><img src="schematic_v0.2.png" alt="架构示意图"></p>\n'
+            __html: '<h1>内部细节</h1>\n<h2 id="deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">Deno 和 Linux 类比<a class="anchor" href="#deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">§</a></h2>\n<table>\n<thead>\n<tr>\n<th style="text-align:right"><strong>Linux</strong></th>\n<th style="text-align:left"><strong>Deno</strong></th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td style="text-align:right">进程 (Processes)</td>\n<td style="text-align:left">Web Workers</td>\n</tr>\n<tr>\n<td style="text-align:right">系统调用 (Syscalls)</td>\n<td style="text-align:left">Ops</td>\n</tr>\n<tr>\n<td style="text-align:right">文件描述符 (fd)</td>\n<td style="text-align:left"><a href="#%E8%B5%84%E6%BA%90-resources">Resource ids (rid)</a></td>\n</tr>\n<tr>\n<td style="text-align:right">调度器 (Scheduler)</td>\n<td style="text-align:left">Tokio</td>\n</tr>\n<tr>\n<td style="text-align:right">用户空间: libc++ / glib / boost</td>\n<td style="text-align:left">https://deno.land/std/</td>\n</tr>\n<tr>\n<td style="text-align:right">/proc/$$/stat</td>\n<td style="text-align:left"><a href="#%E6%8C%87%E6%A0%87-metrics">Deno.metrics()</a></td>\n</tr>\n<tr>\n<td style="text-align:right">手册页 (man pages)</td>\n<td style="text-align:left">deno types</td>\n</tr>\n</tbody>\n</table>\n<h3 id="%E8%B5%84%E6%BA%90-(resources)">资源 (Resources)<a class="anchor" href="#%E8%B5%84%E6%BA%90-(resources)">§</a></h3>\n<p>资源（Resources)，又称 <code>rid</code>，是 Deno 版本的文件描述符。它们是一些整数数值，用来指代打开的文件、套接字 (sockets) 和其他概念。基于 <code>rid</code>，Deno 能够查询系统中有多少个打开的资源，这在测试时很有用。</p>\n<pre class="language-ts"><code class="language-ts"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token comment">// { 0: "stdin", 1: "stdout", 2: "stderr" }</span>\n<span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">close</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token comment">// { 1: "stdout", 2: "stderr" }</span>\n</code></pre>\n<h3 id="%E6%8C%87%E6%A0%87-(metrics)">指标 (Metrics)<a class="anchor" href="#%E6%8C%87%E6%A0%87-(metrics)">§</a></h3>\n<p>指标 (Metrics) 是 Deno 用于各种统计数据的内部计数器。</p>\n<pre class="language-shell"><code class="language-shell"><span class="token operator">></span> console.table<span class="token punctuation">(</span>Deno.metrics<span class="token punctuation">(</span><span class="token punctuation">))</span>\n┌──────────────────┬────────┐\n│     <span class="token punctuation">(</span>index<span class="token punctuation">)</span>      │ Values │\n├──────────────────┼────────┤\n│  opsDispatched   │   <span class="token number">9</span>    │\n│   opsCompleted   │   <span class="token number">9</span>    │\n│ bytesSentControl │  <span class="token number">504</span>   │\n│  bytesSentData   │   <span class="token number">0</span>    │\n│  bytesReceived   │  <span class="token number">856</span>   │\n└──────────────────┴────────┘\n</code></pre>\n<h2 id="%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">架构示意图<a class="anchor" href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">§</a></h2>\n<p><img src="schematic_v0.2.png" alt="架构示意图"></p>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

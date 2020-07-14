@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "contributing.html",
     'title': "贡献",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>贡献</h1>\n<ul>\n<li>\n<p>阅读 <a href="./style-guide.zh-CN.html">风格指南</a>.</p>\n</li>\n<li>\n<p>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</p>\n</li>\n<li>\n<p>在 <a href="https://discord.gg/TGMHGv6">社区聊天室</a> 获取帮助。</p>\n</li>\n<li>\n<p>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</p>\n</li>\n<li>\n<p>请在论坛上保持专业。我们遵循 Rust 的<a href="https://www.rust-lang.org/policies/code-of-conduct">行为准则</a> (Code of conduct)。有问题请向 ry 发邮件(ry@tinyclouds.org)。</p>\n</li>\n</ul>\n<h2 id="%E5%BC%80%E5%8F%91">开发<a class="anchor" href="#%E5%BC%80%E5%8F%91">§</a></h2>\n<p>从源码构建的步骤在 <a href="./contributing/building_from_source.html">这里</a></p>\n<h2 id="%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA-pull-request">发起一个 Pull Request<a class="anchor" href="#%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA-pull-request">§</a></h2>\n<p>在提交之前，请确认以下步骤：</p>\n<ol>\n<li>存在一个相关 issue，并且 PR 文本中引用了它。</li>\n<li>有覆盖这些变化的测试。</li>\n<li>确保 <code>cargo test</code> 通过。</li>\n<li>使用 <code>tools/format.py</code> 格式化代码。</li>\n<li>确保 <code>./tools/lint.py</code> 通过。</li>\n</ol>\n<h2 id="third_party-%E7%9A%84%E6%94%B9%E5%8A%A8"><code>third_party</code> 的改动<a class="anchor" href="#third_party-%E7%9A%84%E6%94%B9%E5%8A%A8">§</a></h2>\n<p><a href="https://github.com/denoland/deno_third_party"><code>deno_third_party</code></a> 包含了大部分 Deno 依赖的外部代码，所以我们在任何时候都知道我们在运行什么。我们用一些手动操作和私有脚本来维护它，要做出改动，您可能需要联系 @ry 或 @piscisaureus。</p>\n<h2 id="%E5%A2%9E%E5%8A%A0-ops">增加 Ops<a class="anchor" href="#%E5%A2%9E%E5%8A%A0-ops">§</a></h2>\n<p>Ops 又称“绑定” (bindings)。</p>\n<p>我们非常担心在添加新 API 时会出错。在向 Deno 添加 Op 时，应该研究其他平台上的对应接口。请列出如何在 Go、Node、Rust 和 Python 中完成此功能。</p>\n<p>例如，参考 <code>deno.rename()</code> 是如何在\n<a href="https://github.com/denoland/deno/pull/671">PR #671</a> 中提出并添加的。</p>\n<h2 id="%E5%8F%91%E5%B8%83">发布<a class="anchor" href="#%E5%8F%91%E5%B8%83">§</a></h2>\n<p>以往发布的所做更改的总结在 <a href="https://github.com/denoland/deno/releases">这里</a>。</p>\n<h2 id="api-%E6%96%87%E6%A1%A3">API 文档<a class="anchor" href="#api-%E6%96%87%E6%A1%A3">§</a></h2>\n<p>公开 API 的文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。</p>\n<h3 id="%E5%88%A9%E7%94%A8-jsdoc">利用 JSDoc<a class="anchor" href="#%E5%88%A9%E7%94%A8-jsdoc">§</a></h3>\n<p>所有通过 <code>deno</code> 模块以及 global/<code>window</code> 命名空间公开的 API 和类型都应该有 JSDoc 文档。该文档经过解析并可供 TypeScript 编译器使用，因此易于在下游提供。JSDoc 块就在它们应用的语句之前，并以 <code>/** doc */</code> 表示。例如：</p>\n<pre class="language-ts"><code class="language-ts"><span class="token doc-comment comment">/** A simple JSDoc comment */</span>\n<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">FOO</span> <span class="token operator">=</span> <span class="token string">"foo"</span><span class="token punctuation">;</span>\n</code></pre>\n<p>更多信息位于 <a href="https://jsdoc.app/">https://jsdoc.app/</a></p>\n'
+            __html: '<h1>贡献</h1>\n<ul>\n<li>\n<p>阅读 <a href="./style-guide.zh-CN.html">风格指南</a>.</p>\n</li>\n<li>\n<p>请不要让 <a href="https://deno.land/benchmarks.html">性能测试</a> 变糟。</p>\n</li>\n<li>\n<p>在 <a href="https://discord.gg/deno">社区聊天室</a> 获取帮助。</p>\n</li>\n<li>\n<p>如果您将要在某个 issue 下做些工作，在那之前请先在 issue 中提示一下。</p>\n</li>\n<li>\n<p>请在论坛上保持专业。我们遵循 Rust 的<a href="https://www.rust-lang.org/policies/code-of-conduct">行为准则</a> (Code of conduct)。有问题请向 ry 发邮件(ry@tinyclouds.org)。</p>\n</li>\n</ul>\n<h2 id="%E5%BC%80%E5%8F%91">开发<a class="anchor" href="#%E5%BC%80%E5%8F%91">§</a></h2>\n<p>从源码构建的步骤在 <a href="./contributing/building_from_source.html">这里</a></p>\n<h2 id="%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA-pull-request">发起一个 Pull Request<a class="anchor" href="#%E5%8F%91%E8%B5%B7%E4%B8%80%E4%B8%AA-pull-request">§</a></h2>\n<p>在提交之前，请确认以下步骤：</p>\n<ol>\n<li>存在一个相关 issue，并且 PR 文本中引用了它。</li>\n<li>有覆盖这些变化的测试。</li>\n<li>确保 <code>cargo test</code> 通过。</li>\n<li>使用 <code>./tools/format.py</code> 格式化代码。</li>\n<li>确保 <code>./tools/lint.py</code> 通过。</li>\n</ol>\n<h2 id="third_party-%E7%9A%84%E6%94%B9%E5%8A%A8"><code>third_party</code> 的改动<a class="anchor" href="#third_party-%E7%9A%84%E6%94%B9%E5%8A%A8">§</a></h2>\n<p><a href="https://github.com/denoland/deno_third_party"><code>deno_third_party</code></a> 包含了大部分 Deno 依赖的外部代码，所以我们在任何时候都知道我们在运行什么。我们用一些手动操作和私有脚本来维护它，要做出改动，您可能需要联系 @ry 或 @piscisaureus。</p>\n<h2 id="%E5%A2%9E%E5%8A%A0-ops">增加 Ops<a class="anchor" href="#%E5%A2%9E%E5%8A%A0-ops">§</a></h2>\n<p>Ops 又称“绑定” (bindings)。</p>\n<p>我们非常担心在添加新 API 时会出错。在向 Deno 添加 Op 时，应该研究其他平台上的对应接口。请列出如何在 Go、Node、Rust 和 Python 中完成此功能。</p>\n<p>例如，参考 <code>deno.rename()</code> 是如何在\n<a href="https://github.com/denoland/deno/pull/671">PR #671</a> 中提出并添加的。</p>\n<h2 id="%E5%8F%91%E5%B8%83">发布<a class="anchor" href="#%E5%8F%91%E5%B8%83">§</a></h2>\n<p>以往发布的所做更改的总结在 <a href="https://github.com/denoland/deno/releases">这里</a>。</p>\n<h2 id="api-%E6%96%87%E6%A1%A3">API 文档<a class="anchor" href="#api-%E6%96%87%E6%A1%A3">§</a></h2>\n<p>公开 API 的文档很重要，我们希望它与代码内联。这有助于确保代码和文档紧密结合在一起。</p>\n<h3 id="%E5%88%A9%E7%94%A8-jsdoc">利用 JSDoc<a class="anchor" href="#%E5%88%A9%E7%94%A8-jsdoc">§</a></h3>\n<p>所有通过 <code>deno</code> 模块以及 global/<code>window</code> 命名空间公开的 API 和类型都应该有 JSDoc 文档。该文档经过解析并可供 TypeScript 编译器使用，因此易于在下游提供。JSDoc 块就在它们应用的语句之前，并以 <code>/** doc */</code> 表示。例如：</p>\n<pre class="language-ts"><code class="language-ts"><span class="token doc-comment comment">/** A simple JSDoc comment */</span>\n<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">FOO</span> <span class="token operator">=</span> <span class="token string">"foo"</span><span class="token punctuation">;</span>\n</code></pre>\n<p>更多信息位于 <a href="https://jsdoc.app/">https://jsdoc.app/</a></p>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

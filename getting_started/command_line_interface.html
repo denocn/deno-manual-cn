@@ -1,0 +1,94 @@
+<html class="" data-reactroot=""><head><script async="" src="https://www.google-analytics.com/analytics.js"></script><script>
+            window.GoogleAnalyticsObject="ga";(window.ga=window.ga||function(){(window.ga.q=window.ga.q||[]).push(arguments);}),(window.ga.l=1*new Date());
+
+            ga('create', 'UA-123999279-4', 'auto');
+            ga('send', 'pageview');</script><title>命令行界面 · Deno 手册</title><meta charSet="utf-8"/><link id="prismTheme" rel="stylesheet" href="/assets/prism.css"/><script>
+let shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches
+if (shouldSetIsDark) {
+  document.documentElement.classList.add('is_dark');
+  document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+}
+</script><link rel="stylesheet" href="/assets/index.css"/></head><body><header><h1><a href="/">Deno 手册</a></h1><nav><ul><li><a href="https://github.com/denocn/deno_manual">GitHub</a></li><li><a href="http://deno.js.cn">社区</a></li><li class="toggle_dark"><span class="sun" style="background-image:url(&quot;/assets/sun.svg&quot;)"></span><span class="sun-l" style="background-image:url(&quot;/assets/sun-l.svg&quot;)"></span><span class="moon" style="background-image:url(&quot;/assets/moon.svg&quot;)"></span><span class="moon-l" style="background-image:url(&quot;/assets/moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol><li><a href="/index.html" class="">Deno 中文手册</a></li><li><a href="/introduction.html" class="">介绍</a></li><li><a href="/getting_started.html" class="">入门</a><ol><li><a href="/getting_started/installation.html" class="">安装</a></li><li><a href="/getting_started/setup_your_environment.html" class="">设置您的环境</a></li><li><a href="/getting_started/first_steps.html" class="">第一步</a></li><li><a href="/getting_started/command_line_interface.html" class="active">命令行界面</a></li><li><a href="/getting_started/permissions.html" class="">权限</a></li><li><a href="/getting_started/typescript.html" class="">使用 TypeScript</a></li><li><a href="/getting_started/webassembly.html" class="">WebAssembly 支持</a></li></ol></li><li><a href="/runtime.html" class="">运行时</a><ol><li><a href="/runtime/stability.html" class="">稳定性</a></li><li><a href="/runtime/program_lifecycle.html" class="">程序生命周期</a></li><li><a href="/runtime/compiler_apis.html" class="">编译器 API</a></li><li><a href="/runtime/workers.html" class="">Worker</a></li></ol></li><li><a href="/linking_to_external_code.html" class="">与外部代码连接</a><ol><li><a href="/linking_to_external_code/reloading_modules.html" class="">重新加载特定的模块</a></li><li><a href="/linking_to_external_code/integrity_checking.html" class="">完整性检查与锁定文件</a></li><li><a href="/linking_to_external_code/proxies.html" class="">代理（Proxies）</a></li><li><a href="/linking_to_external_code/import_maps.html" class="">导入映射（Import maps）</a></li></ol></li><li><a href="/standard_library.html" class="">标准库</a></li><li><a href="/testing.html" class="">测试</a><ol><li><a href="/testing/assertions.html" class="">断言</a></li></ol></li><li><a href="/tools.html" class="">内置工具</a><ol><li><a href="/tools/debugger.html" class="">调试器 (debugger)</a></li><li><a href="/tools/script_installer.html" class="">脚本安装器</a></li><li><a href="/tools/formatter.html" class="">代码格式化</a></li><li><a href="/tools/bundler.html" class="">打包</a></li><li><a href="/tools/documentation_generator.html" class="">文档生成器</a></li><li><a href="/tools/dependency_inspector.html" class="">依赖检查器</a></li><li><a href="/tools/linter.html" class="">Linter</a></li></ol></li><li><a href="/embedding_deno.html" class="">嵌入式 Deno</a></li><li><a href="/contributing.html" class="">贡献</a><ol><li><a href="/contributing/building_from_source.html" class="">从源码构建</a></li><li><a href="/contributing/development_tools.html" class="">测试和工具</a></li><li><a href="/contributing/style_guide.html" class="">Deno 风格指南</a></li><li><a href="/contributing/architecture.html" class="">内部细节</a></li></ol></li><li><a href="/examples.html" class="">示例</a><ol><li><a href="/examples/unix_cat.html" class="">Unix cat</a></li><li><a href="/examples/file_server.html" class="">文件服务器</a></li><li><a href="/examples/tcp_echo.html" class="">TCP echo</a></li><li><a href="/examples/subprocess.html" class="">运行子进程</a></li><li><a href="/examples/permissions.html" class="">检查与放弃权限</a></li><li><a href="/examples/os_signals.html" class="">处理系统信号</a></li><li><a href="/examples/file_system_events.html" class="">文件系统事件</a></li><li><a href="/examples/testing_if_main.html" class="">测试当前文件是否为主程序</a></li></ol></li></ol></aside><section class="main"><div class="main-article"><article><h1>命令行界面</h1>
+<p>Deno 是一个命令行程序。到目前为止，看过这些示例后，您应该熟悉了一些简单的命令，并且已经了解了 shell 的基本用法。</p>
+<p>这是查看主要帮助文档的几种方法：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># 使用子命令</span>
+deno <span class="token builtin class-name">help</span>
+
+<span class="token comment"># 使用短选项 —— 输出和上面一样</span>
+deno -h
+
+<span class="token comment"># 使用长选项 —— 输出更加详细</span>
+deno --help
+</code></pre>
+<p>Deno 的 CLI 是基于子命令的。上面的帮助命令应该显示了一个子命令列表，例如 <code>deno bundle</code>。</p>
+<p>要查看特定于子命令的帮助，您可以参考以下示例：</p>
+<pre class="language-shell"><code class="language-shell">deno <span class="token builtin class-name">help</span> bundle
+deno bundle -h
+deno bundle --help
+</code></pre>
+<p>各个子命令的详细指南在 <a href="../tools.html">这里</a>。</p>
+<h2 id="%E8%84%9A%E6%9C%AC%E6%9D%A5%E6%BA%90">脚本来源<a class="anchor" href="#%E8%84%9A%E6%9C%AC%E6%9D%A5%E6%BA%90">§</a></h2>
+<p>Deno 可以从多个来源获取脚本，一个文件名，一个 URL，或者是 &quot;-&quot;，表示从标准输入读取。后者在与其他应用集成时很有用。</p>
+<pre class="language-shell"><code class="language-shell">deno run main.ts
+deno run <a class="token url-link" href="https://mydomain.com/main.ts">https://mydomain.com/main.ts</a>
+<span class="token function">cat</span> main.ts <span class="token operator">|</span> deno run -
+</code></pre>
+<h2 id="%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0">脚本参数<a class="anchor" href="#%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0">§</a></h2>
+<p>通过在脚本名称后指定参数，您可以将用户空间参数传递给要运行的脚本，这些参数与 Deno 运行时选项区分开。</p>
+<pre class="language-shell"><code class="language-shell">deno run main.ts a b -c --quiet
+</code></pre>
+<pre class="language-ts"><code class="language-ts"><span class="token comment">// main.ts</span>
+<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token property-access">args</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ "a", "b", "-c", "--quiet" ]</span>
+</code></pre>
+<p><strong>请注意，在脚本名称之后传递的所有内容都将作为脚本参数传递，而不会用作 Deno 运行时选项。</strong></p>
+<p>这将导致以下陷阱：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token comment"># 正常情况：我们给 net_client.ts 授予网络权限。</span>
+deno run --allow-net net_client.ts
+
+<span class="token comment"># 错误情况：--allow-net 传递为 Deno.args，引发网络权限错误。</span>
+deno run net_client.ts --allow-net
+</code></pre>
+<p>有人认为这打破了常规：</p>
+<blockquote>
+<p>一个非位置选项的解析方式会根据位置变化。</p>
+</blockquote>
+<p>然而：</p>
+<ol>
+<li>这是区分运行时选项和脚本参数的最合乎逻辑的方法。</li>
+<li>这是区分运行时选项和脚本参数的最符合人体工程学的方法。</li>
+<li>实际上，这和其他流行的运行时具有相同的行为。
+<ul>
+<li>试试 <code>node -c index.js</code> 和 <code>node index.js -c</code>，第一个只会根据 <code>-c</code> 选项对 <code>index.js</code> 做语法检查，而第二个会 <em>执行</em> <code>index.js</code>，将 <code>-c</code> 传递为 <code>require(&quot;process&quot;).argv</code>。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<p>下面是在相关的子命令之间共享的逻辑选项组。</p>
+<h2 id="%E5%AE%8C%E6%95%B4%E6%80%A7%E9%80%89%E9%A1%B9">完整性选项<a class="anchor" href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E9%80%89%E9%A1%B9">§</a></h2>
+<p>影响可以将资源下载到缓存的命令：<code>deno cache</code>，<code>deno run</code> 和 <code>deno test</code>.</p>
+<pre class="language-autoit"><code class="language-autoit"><span class="token operator">-</span><span class="token operator">-</span>lock <span class="token operator">&lt;</span>FILE<span class="token operator">></span>    检查指定的锁文件
+<span class="token operator">-</span><span class="token operator">-</span>lock<span class="token operator">-</span>write     写入锁文件，和 <span class="token operator">-</span><span class="token operator">-</span>lock 一起使用
+</code></pre>
+<p>更多信息在 <a href="../linking_to_external_code/integrity_checking.html">这里</a>。</p>
+<h2 id="%E7%BC%93%E5%AD%98%E5%92%8C%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9">缓存和编译选项<a class="anchor" href="#%E7%BC%93%E5%AD%98%E5%92%8C%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9">§</a></h2>
+<p>影响可以增加缓存的命令：<code>deno cache</code>，<code>deno run</code> 和 <code>deno test</code>.</p>
+<p>以及影响模块解析、编译配置等的选项。</p>
+<pre class="language-autoit"><code class="language-autoit"><span class="token operator">-</span><span class="token operator">-</span>config <span class="token operator">&lt;</span>FILE<span class="token operator">></span>               加载 tsconfig<span class="token punctuation">.</span>json 配置文件
+<span class="token operator">-</span><span class="token operator">-</span>importmap <span class="token operator">&lt;</span>FILE<span class="token operator">></span>            不稳定的<span class="token punctuation">:</span> 加载导入映射文件
+<span class="token operator">-</span><span class="token operator">-</span>no<span class="token operator">-</span>remote                   不要解析远程模块
+<span class="token operator">-</span><span class="token operator">-</span>reload<span class="token operator">=</span><span class="token operator">&lt;</span>CACHE_BLOCKLIST<span class="token operator">></span>    重新加载源代码缓存（重新编译 TypeScript）
+<span class="token operator">-</span><span class="token operator">-</span>unstable                    启用不稳定 API
+</code></pre>
+<h2 id="%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">运行时选项<a class="anchor" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">§</a></h2>
+<p>影响可以运行用户代码的命令：<code>deno run</code> 和 <code>deno test</code>.</p>
+<h3 id="%E6%9D%83%E9%99%90%E9%80%89%E9%A1%B9">权限选项<a class="anchor" href="#%E6%9D%83%E9%99%90%E9%80%89%E9%A1%B9">§</a></h3>
+<p><a href="./permissions.html#%E6%9D%83%E9%99%90%E5%88%97%E8%A1%A8">这里</a> 列出了所有权限选项。</p>
+<h3 id="%E5%85%B6%E4%BB%96%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">其他运行时选项<a class="anchor" href="#%E5%85%B6%E4%BB%96%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">§</a></h3>
+<p>影响运行时环境的更多选项：</p>
+<pre class="language-autoit"><code class="language-autoit"><span class="token operator">-</span><span class="token operator">-</span>cached<span class="token operator">-</span>only                要求远程依赖已经被缓存
+<span class="token operator">-</span><span class="token operator">-</span>inspect<span class="token operator">=</span><span class="token operator">&lt;</span>HOST<span class="token punctuation">:</span>PORT<span class="token operator">></span>        在 host<span class="token punctuation">:</span>port 启动检查器
+<span class="token operator">-</span><span class="token operator">-</span>inspect<span class="token operator">-</span>brk<span class="token operator">=</span><span class="token operator">&lt;</span>HOST<span class="token punctuation">:</span>PORT<span class="token operator">></span>    在 host<span class="token punctuation">:</span>port 启动检查器并且暂停执行
+<span class="token operator">-</span><span class="token operator">-</span>seed <span class="token operator">&lt;</span>NUMBER<span class="token operator">></span>              指定 Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 的随机种子
+<span class="token operator">-</span><span class="token operator">-</span>v8<span class="token operator">-</span>flags<span class="token operator">=</span><span class="token operator">&lt;</span>v8<span class="token operator">-</span>flags<span class="token operator">></span>        设置 V8 命令行选项
+</code></pre>
+</article></div><div class="main-toc"><aside><nav class="toc"><ol><li><a href="#%E8%84%9A%E6%9C%AC%E6%9D%A5%E6%BA%90">脚本来源</a></li><li><a href="#%E8%84%9A%E6%9C%AC%E5%8F%82%E6%95%B0">脚本参数</a></li><li><a href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E9%80%89%E9%A1%B9">完整性选项</a></li><li><a href="#%E7%BC%93%E5%AD%98%E5%92%8C%E7%BC%96%E8%AF%91%E9%80%89%E9%A1%B9">缓存和编译选项</a></li><li><a href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">运行时选项</a><ol><li><a href="#%E6%9D%83%E9%99%90%E9%80%89%E9%A1%B9">权限选项</a></li><li><a href="#%E5%85%B6%E4%BB%96%E8%BF%90%E8%A1%8C%E6%97%B6%E9%80%89%E9%A1%B9">其他运行时选项</a></li></ol></li></ol></nav></aside></div></section><script crossorigin="anonymous" src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/main.js"></script></body></html>

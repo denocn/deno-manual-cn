@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "examples/file_server.html",
     'title': "文件服务器",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>文件服务器</h1>\n<p>这个示例将会启动一个本地目录的 HTTP 服务器。</p>\n<p>安装</p>\n<pre class="language-shell"><code class="language-shell">deno <span class="token function">install</span> --allow-net --allow-read <a class="token url-link" href="https://deno.land/std/http/file_server.ts">https://deno.land/std/http/file_server.ts</a>\n</code></pre>\n<p>运行</p>\n<pre class="language-shell"><code class="language-shell">$ file_server <span class="token builtin class-name">.</span>\nDownloading <a class="token url-link" href="https://deno.land/std/http/file_server.ts">https://deno.land/std/http/file_server.ts</a><span class="token punctuation">..</span>.\n<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>\nHTTP server listening on <a class="token url-link" href="http://0.0.0.0:4500/">http://0.0.0.0:4500/</a>\n</code></pre>\n<p>如果想要升级到最新版本：</p>\n<pre class="language-shell"><code class="language-shell">$ file_server --reload\n</code></pre>\n'
+            __html: '<h1>文件服务器</h1>\n<p>这个示例将会启动一个本地目录的 HTTP 服务器。</p>\n<p>安装</p>\n<pre class="language-shell"><code class="language-shell">deno <span class="token function">install</span> --allow-net --allow-read <a class="token url-link" href="https://deno.land/std/http/file_server.ts">https://deno.land/std/http/file_server.ts</a>\n</code></pre>\n<p>运行</p>\n<pre class="language-shell"><code class="language-shell">$ file_server <span class="token builtin class-name">.</span>\nDownloading <a class="token url-link" href="https://deno.land/std/http/file_server.ts">https://deno.land/std/http/file_server.ts</a><span class="token punctuation">..</span>.\n<span class="token punctuation">[</span><span class="token punctuation">..</span>.<span class="token punctuation">]</span>\nHTTP server listening on <a class="token url-link" href="http://0.0.0.0:4500/">http://0.0.0.0:4500/</a>\n</code></pre>\n<p>如果想要升级到最新版本：</p>\n<pre class="language-shell"><code class="language-shell">file_server --reload\n</code></pre>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

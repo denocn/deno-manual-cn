@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "linking_to_external_code/import_maps.html",
     'title': "导入映射（Import maps）",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>导入映射（Import maps）</h1>\n<blockquote>\n<p>这是一个不稳定的特性。\n更多信息请查阅 <a href="../runtime/stability.html">稳定性</a></p>\n</blockquote>\n<p>Deno 支持 <a href="https://github.com/WICG/import-maps">导入映射</a>。</p>\n<p>您可以通过 <code>--importmap=&lt;FILE&gt;</code> 的命令行选项使用导入映射。</p>\n<p>目前的限制:</p>\n<ul>\n<li>只支持单个导入映射</li>\n<li>没有 fallback URL</li>\n<li>Deno 不支持 <code>std:</code> 命名空间</li>\n<li>仅支持 <code>file:</code>，<code>http:</code> 和 <code>https:</code> 协议</li>\n</ul>\n<p>示例：</p>\n<pre class="language-js"><code class="language-js"><span class="token comment">// import_map.json</span>\n\n<span class="token punctuation">{</span>\n   <span class="token string">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n      <span class="token string">"http/"</span><span class="token operator">:</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std/http/">https://deno.land/std/http/</a>"</span>\n   <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<pre class="language-ts"><code class="language-ts"><span class="token comment">// hello_server.ts</span>\n\n<span class="token keyword">import</span> <span class="token punctuation">{</span> serve <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"http/server.ts"</span><span class="token punctuation">;</span>\n\n<span class="token keyword">const</span> body <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">TextEncoder</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">encode</span><span class="token punctuation">(</span><span class="token string">"Hello World\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span class="token keyword">const</span> req <span class="token keyword">of</span> <span class="token function">serve</span><span class="token punctuation">(</span><span class="token string">":8000"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>\n  req<span class="token punctuation">.</span><span class="token method function property-access">respond</span><span class="token punctuation">(</span><span class="token punctuation">{</span> body <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<pre class="language-shell"><code class="language-shell">$ deno run --allow-net --importmap<span class="token operator">=</span>import_map.json --unstable hello_server.ts\n</code></pre>\n'
+            __html: '<h1>导入映射（Import maps）</h1>\n<blockquote>\n<p>这是一个不稳定的特性。\n更多信息请查阅 <a href="../runtime/stability.html">稳定性</a></p>\n</blockquote>\n<p>Deno 支持 <a href="https://github.com/WICG/import-maps">导入映射</a>。</p>\n<p>您可以通过 <code>--importmap=&lt;FILE&gt;</code> 的命令行选项使用导入映射。</p>\n<p>目前的限制:</p>\n<ul>\n<li>只支持单个导入映射</li>\n<li>没有 fallback URL</li>\n<li>Deno 不支持 <code>std:</code> 命名空间</li>\n<li>仅支持 <code>file:</code>，<code>http:</code> 和 <code>https:</code> 协议</li>\n</ul>\n<p>示例：</p>\n<p><strong>import_map.json</strong></p>\n<pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>\n   <span class="token string">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n      <span class="token string">"fmt/"</span><span class="token operator">:</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std@0.55.0/fmt/">https://deno.land/std@0.55.0/fmt/</a>"</span>\n   <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<p><strong>color.ts</strong></p>\n<pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> red <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"fmt/colors.ts"</span><span class="token punctuation">;</span>\n\n<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token function">red</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n</code></pre>\n<p>运行：</p>\n<pre class="language-shell"><code class="language-shell">$ deno run --importmap<span class="token operator">=</span>import_map.json --unstable color.ts\n</code></pre>\n<p>为绝对导入使用起始目录：</p>\n<pre class="language-json"><code class="language-json"><span class="token comment">// import_map.json</span>\n\n<span class="token punctuation">{</span>\n  <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n    <span class="token property">"/"</span><span class="token operator">:</span> <span class="token string">"./"</span>\n  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>\n</code></pre>\n<pre class="language-ts"><code class="language-ts"><span class="token comment">// main.ts</span>\n\n<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">MyUtil</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"/util.ts"</span><span class="token punctuation">;</span>\n</code></pre>\n<p>您可以映射一个不同的目录（比如 src）：</p>\n<pre class="language-json"><code class="language-json"><span class="token comment">// import_map.json</span>\n\n<span class="token punctuation">{</span>\n  <span class="token property">"imports"</span><span class="token operator">:</span> <span class="token punctuation">{</span>\n    <span class="token property">"/"</span><span class="token operator">:</span> <span class="token string">"./src"</span>\n  <span class="token punctuation">}</span>\n<span class="token punctuation">}</span>\n</code></pre>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

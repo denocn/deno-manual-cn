@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "tools.html",
     'title': "内置工具",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>内置工具</h1>\n<p>Deno 提供了一些内置的工具，在处理 JavaScript 和 TypeScript 时很有用。</p>\n<!-- prettier-ignore-start -->\n<!-- prettier incorrectly moves the coming soon links to new lines -->\n<ul>\n<li><a href="./tools/bundler.html">打包器 (<code>deno bundle</code>)</a></li>\n<li><a href="./tools/debugger.html">调试器 (<code>--inspect, --inspect-brk</code>)</a></li>\n<li><a href="./tools/dependency_inspector.html">依赖检查器 (<code>deno info</code>)</a></li>\n<li><a href="./tools/documentation_generator.html">文档生成器 (<code>deno doc</code>)</a></li>\n<li><a href="./tools/formatter.html">代码格式化 (<code>deno fmt</code>)</a></li>\n<li><a href="./testing.html">测试 (<code>deno test</code>)</a></li>\n<li>linter (<code>deno lint</code>) <a href="https://github.com/denoland/deno/issues/1880">coming soon</a></li>\n</ul>\n<!-- prettier-ignore-end -->\n'
+            __html: '<h1>内置工具</h1>\n<p>Deno 提供了一些内置的工具，在处理 JavaScript 和 TypeScript 时很有用。</p>\n<!-- prettier-ignore-start -->\n<!-- prettier incorrectly moves the coming soon links to new lines -->\n<ul>\n<li><a href="./tools/bundler.html">打包器 (<code>deno bundle</code>)</a></li>\n<li><a href="./tools/debugger.html">调试器 (<code>--inspect, --inspect-brk</code>)</a></li>\n<li><a href="./tools/dependency_inspector.html">依赖检查器 (<code>deno info</code>)</a></li>\n<li><a href="./tools/documentation_generator.html">文档生成器 (<code>deno doc</code>)</a></li>\n<li><a href="./tools/formatter.html">代码格式化 (<code>deno fmt</code>)</a></li>\n<li><a href="./testing.html">测试 (<code>deno test</code>)</a></li>\n<li><a href="./tools/linter.html">linter (<code>deno lint</code>)</a></li>\n</ul>\n<!-- prettier-ignore-end -->\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,7 +140,7 @@ export default {
     'outputPath': "standard_library.html",
     'title': "标准库",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>标准库</h1>\n<p>Deno 提供一组标准模块，它们经过核心团队审计，保证能在 Deno 上工作。</p>\n<p>标准库地址：<a href="https://deno.land/std/">https://deno.land/std/</a></p>\n<h2 id="%E7%89%88%E6%9C%AC%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7">版本和稳定性<a class="anchor" href="#%E7%89%88%E6%9C%AC%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7">§</a></h2>\n<p>标准库尚不稳定，因此采用与 Deno 不同的版本号。</p>\n<p>最新的发布请查阅 <a href="https://deno.land/std/">https://deno.land/std/</a> 或 <a href="https://deno.land/std/version.ts">https://deno.land/std/version.ts</a>。</p>\n<p>我们强烈建议：始终使用确定版本的标准库，以避免意外的改动。</p>\n<h2 id="%E6%8E%92%E9%94%99-(troubleshooting)">排错 (Troubleshooting)<a class="anchor" href="#%E6%8E%92%E9%94%99-(troubleshooting)">§</a></h2>\n<p>标准库中的一些模块使用了不稳定的 Deno API。</p>\n<p>不用 <code>--unstable</code> 命令行选项运行这些模块会产生一些 TypeScript 错误，表示 <code>Deno</code> 命名空间中不存在一些 API：</p>\n<pre class="language-typescript"><code class="language-typescript"><span class="token comment">// main.ts</span>\n<span class="token keyword">import</span> <span class="token punctuation">{</span> copy <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts">https://deno.land/std@0.50.0/fs/copy.ts</a>"</span><span class="token punctuation">;</span>\n\n<span class="token function">copy</span><span class="token punctuation">(</span><span class="token string">"log.txt"</span><span class="token punctuation">,</span> <span class="token string">"log-old.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n</code></pre>\n<pre class="language-shell"><code class="language-shell">$ deno run --allow-read --allow-write main.ts\nCompile <a class="token url-link" href="file:///dev/deno/main.ts">file:///dev/deno/main.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts">https://deno.land/std@0.50.0/fs/copy.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/ensure_dir.ts">https://deno.land/std@0.50.0/fs/ensure_dir.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/_util.ts">https://deno.land/std@0.50.0/fs/_util.ts</a>\nerror: TS2339 <span class="token punctuation">[</span>ERROR<span class="token punctuation">]</span>: Property <span class="token string">\'utime\'</span> does not exist on <span class="token builtin class-name">type</span> <span class="token string">\'typeof Deno\'</span><span class="token builtin class-name">.</span>\n    await Deno.utime<span class="token punctuation">(</span>dest, statInfo.atime, statInfo.mtime<span class="token punctuation">)</span><span class="token punctuation">;</span>\n               ~~~~~\n    at <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts:90:16">https://deno.land/std@0.50.0/fs/copy.ts:90:16</a>\n\nTS2339 <span class="token punctuation">[</span>ERROR<span class="token punctuation">]</span>: Property <span class="token string">\'utimeSync\'</span> does not exist on <span class="token builtin class-name">type</span> <span class="token string">\'typeof Deno\'</span><span class="token builtin class-name">.</span>\n    Deno.utimeSync<span class="token punctuation">(</span>dest, statInfo.atime, statInfo.mtime<span class="token punctuation">)</span><span class="token punctuation">;</span>\n         ~~~~~~~~~\n    at <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts:101:10">https://deno.land/std@0.50.0/fs/copy.ts:101:10</a>\n</code></pre>\n<p>解决方法是加上 <code>--unstable</code> 选项：</p>\n<pre class="language-shell"><code class="language-shell">$ deno run --allow-read --allow-write --unstable main.ts\n</code></pre>\n<p>要确定哪些 API 是不稳定的，请查阅类型声明 <a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts">lib.deno.unstable.d.ts</a></p>\n<p>这个问题会在不远的将来解决。</p>\n'
+            __html: '<h1>标准库</h1>\n<p>Deno 提供一组标准模块，它们经过核心团队审计，保证能在 Deno 上工作。</p>\n<p>标准库地址：<a href="https://deno.land/std/">https://deno.land/std/</a></p>\n<h2 id="%E7%89%88%E6%9C%AC%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7">版本和稳定性<a class="anchor" href="#%E7%89%88%E6%9C%AC%E5%92%8C%E7%A8%B3%E5%AE%9A%E6%80%A7">§</a></h2>\n<p>标准库尚不稳定，因此采用与 Deno 不同的版本号。每次 Deno 发布时，标准库也会一起发布。</p>\n<p>最新的发布请查阅 <a href="https://deno.land/std/">https://deno.land/std/</a> 或 <a href="https://deno.land/std/version.ts">https://deno.land/std/version.ts</a>。</p>\n<p>我们强烈建议：始终使用确定版本的标准库，以避免意外的改动。</p>\n<p>例如，连接到随时可能更改的主分支时可能会导致编译错误或意外行为：</p>\n<pre class="language-typescript"><code class="language-typescript"><span class="token comment">// 从 master 导入，这应当避免</span>\n<span class="token keyword">import</span> <span class="token punctuation">{</span> copy <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std/fs/copy.ts">https://deno.land/std/fs/copy.ts</a>"</span><span class="token punctuation">;</span>\n</code></pre>\n<p>更好的选择是使用不可变且不会更改的 std 库版本：</p>\n<pre class="language-typescript"><code class="language-typescript"><span class="token comment">// 从不可变的 std v0.50.0 导入</span>\n<span class="token keyword">import</span> <span class="token punctuation">{</span> copy <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts">https://deno.land/std@0.50.0/fs/copy.ts</a>"</span><span class="token punctuation">;</span>\n</code></pre>\n<h2 id="%E6%8E%92%E9%94%99-(troubleshooting)">排错 (Troubleshooting)<a class="anchor" href="#%E6%8E%92%E9%94%99-(troubleshooting)">§</a></h2>\n<p>标准库中的一些模块使用了不稳定的 Deno API。</p>\n<p>不用 <code>--unstable</code> 命令行选项运行这些模块会产生一些 TypeScript 错误，表示 <code>Deno</code> 命名空间中不存在一些 API：</p>\n<pre class="language-typescript"><code class="language-typescript"><span class="token comment">// main.ts</span>\n<span class="token keyword">import</span> <span class="token punctuation">{</span> copy <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"<a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts">https://deno.land/std@0.50.0/fs/copy.ts</a>"</span><span class="token punctuation">;</span>\n\n<span class="token function">copy</span><span class="token punctuation">(</span><span class="token string">"log.txt"</span><span class="token punctuation">,</span> <span class="token string">"log-old.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>\n</code></pre>\n<pre class="language-shell"><code class="language-shell">$ deno run --allow-read --allow-write main.ts\nCompile <a class="token url-link" href="file:///dev/deno/main.ts">file:///dev/deno/main.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts">https://deno.land/std@0.50.0/fs/copy.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/ensure_dir.ts">https://deno.land/std@0.50.0/fs/ensure_dir.ts</a>\nDownload <a class="token url-link" href="https://deno.land/std@0.50.0/fs/_util.ts">https://deno.land/std@0.50.0/fs/_util.ts</a>\nerror: TS2339 <span class="token punctuation">[</span>ERROR<span class="token punctuation">]</span>: Property <span class="token string">\'utime\'</span> does not exist on <span class="token builtin class-name">type</span> <span class="token string">\'typeof Deno\'</span><span class="token builtin class-name">.</span>\n    await Deno.utime<span class="token punctuation">(</span>dest, statInfo.atime, statInfo.mtime<span class="token punctuation">)</span><span class="token punctuation">;</span>\n               ~~~~~\n    at <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts:90:16">https://deno.land/std@0.50.0/fs/copy.ts:90:16</a>\n\nTS2339 <span class="token punctuation">[</span>ERROR<span class="token punctuation">]</span>: Property <span class="token string">\'utimeSync\'</span> does not exist on <span class="token builtin class-name">type</span> <span class="token string">\'typeof Deno\'</span><span class="token builtin class-name">.</span>\n    Deno.utimeSync<span class="token punctuation">(</span>dest, statInfo.atime, statInfo.mtime<span class="token punctuation">)</span><span class="token punctuation">;</span>\n         ~~~~~~~~~\n    at <a class="token url-link" href="https://deno.land/std@0.50.0/fs/copy.ts:101:10">https://deno.land/std@0.50.0/fs/copy.ts:101:10</a>\n</code></pre>\n<p>解决方法是加上 <code>--unstable</code> 选项：</p>\n<pre class="language-shell"><code class="language-shell">deno run --allow-read --allow-write --unstable main.ts\n</code></pre>\n<p>要确定哪些 API 是不稳定的，请查阅类型声明 <a href="https://github.com/denoland/deno/blob/master/cli/js/lib.deno.unstable.d.ts">lib.deno.unstable.d.ts</a></p>\n<p>这个问题会在不远的将来解决。如果您依赖的特定模块在没有该选项的情况下成功编译，则可以忽略该选项。</p>\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {

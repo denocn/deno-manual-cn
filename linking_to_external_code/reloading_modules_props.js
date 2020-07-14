@@ -50,6 +50,7 @@ export default {
                     "getting_started/installation.md",
                     "getting_started/setup_your_environment.md",
                     "getting_started/first_steps.md",
+                    "getting_started/command_line_interface.md",
                     "getting_started/permissions.md",
                     "getting_started/typescript.md",
                     "getting_started/webassembly.md"
@@ -77,7 +78,10 @@ export default {
                 "link": "standard_library.md"
             },
             {
-                "link": "testing.md"
+                "link": "testing.md",
+                "children": [
+                    "testing/assertions.md"
+                ]
             },
             {
                 "link": "tools.md",
@@ -87,7 +91,8 @@ export default {
                     "tools/formatter.md",
                     "tools/bundler.md",
                     "tools/documentation_generator.md",
-                    "tools/dependency_inspector.md"
+                    "tools/dependency_inspector.md",
+                    "tools/linter.md"
                 ]
             },
             {
@@ -135,14 +140,14 @@ export default {
     'outputPath': "linking_to_external_code/reloading_modules.html",
     'title': "重新加载特定的模块",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>重新加载特定的模块</h1>\n<p>您可以使用 <code>--reload</code> 选项使本地 <code>DENO_DIR</code> 缓存失效。其用途如下：</p>\n<p>重新加载所有内容：<code>--reload</code></p>\n<p>有时我们只想升级某些模块，可以通过将参数传递给 <code>--reload</code> 选项来控制它。</p>\n<p>重新加载所有标准模块：<code>--reload=https://deno.land/std</code></p>\n<p>为了重新加载特定的模块（在这个例子中是 colors 和 file system copy），需要使用逗号来分隔 URL：</p>\n<p><code>--reload=https://deno.land/std/fs/copy.ts,https://deno.land/std/fmt/colors.ts</code></p>\n'
+            __html: '<h1>重新加载特定的模块</h1>\n<p>默认情况下，缓存中的模块将被重用，而无需获取或重新编译它。有时这不是期望的行为，您可以强制 deno 重新下载模块并重新编译到缓存中。您可以使用 <code>deno cache</code> 子命令的<code>--reload</code> 选项来使本地 <code>DENO_DIR</code> 缓存无效。</p>\n<p>其用法描述如下：</p>\n<h2 id="%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9">重新加载所有内容<a class="anchor" href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9">§</a></h2>\n<pre class="language-ts"><code class="language-ts">deno cache <span class="token operator">--</span>reload my_module<span class="token punctuation">.</span><span class="token property-access">ts</span>\n</code></pre>\n<h2 id="%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%9D%97">重新加载指定模块<a class="anchor" href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%9D%97">§</a></h2>\n<p>有时我们只想升级某些模块，可以通过将参数传递给 <code>--reload</code> 选项来控制它。</p>\n<p>重新加载所有 v0.55.0 的标准模块：</p>\n<pre class="language-ts"><code class="language-ts">deno cache <span class="token operator">--</span>reload<span class="token operator">=</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>deno<span class="token punctuation">.</span><span class="token property-access">land</span><span class="token operator">/</span>std@v0<span class="token punctuation">.</span><span class="token number">55.0</span> my_module<span class="token punctuation">.</span><span class="token property-access">ts</span>\n</code></pre>\n<p>为了重新加载特定的模块（在这个例子中是 colors 和 file system copy），需要使用逗号来分隔 URL：</p>\n<pre class="language-ts"><code class="language-ts">deno cache <span class="token operator">--</span>reload<span class="token operator">=</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>deno<span class="token punctuation">.</span><span class="token property-access">land</span><span class="token operator">/</span>std<span class="token operator">/</span>fs<span class="token operator">/</span>copy<span class="token punctuation">.</span><span class="token property-access">ts</span><span class="token punctuation">,</span>https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>deno<span class="token punctuation">.</span><span class="token property-access">land</span><span class="token operator">/</span>std<span class="token operator">/</span>fmt<span class="token operator">/</span>colors<span class="token punctuation">.</span><span class="token property-access">ts</span> my_module<span class="token punctuation">.</span><span class="token property-access">ts</span>\n</code></pre>\n<!-- Should this be part of examples? -->\n'
         } }),
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { crossOrigin: "anonymous", src: "https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js" }),
         React.createElement("script", { src: "/main.js", type: "module" })),
     'toc': React.createElement("aside", { dangerouslySetInnerHTML: {
-            __html: '<nav class="toc"><ol></ol></nav>'
+            __html: '<nav class="toc"><ol><li><a href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9">重新加载所有内容</a></li><li><a href="#%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%9D%97">重新加载指定模块</a></li></ol></nav>'
         } }),
     'sidebar': [
         {
@@ -169,6 +174,10 @@ export default {
                     "link": "getting_started/first_steps.html"
                 },
                 {
+                    "text": "命令行界面",
+                    "link": "getting_started/command_line_interface.html"
+                },
+                {
                     "text": "权限",
                     "link": "getting_started/permissions.html"
                 },
@@ -177,7 +186,7 @@ export default {
                     "link": "getting_started/typescript.html"
                 },
                 {
-                    "text": "WASM 支持",
+                    "text": "WebAssembly 支持",
                     "link": "getting_started/webassembly.html"
                 }
             ],
@@ -233,6 +242,12 @@ export default {
         },
         {
             "link": "testing.html",
+            "children": [
+                {
+                    "text": "断言",
+                    "link": "testing/assertions.html"
+                }
+            ],
             "text": "测试"
         },
         {
@@ -261,6 +276,10 @@ export default {
                 {
                     "text": "依赖检查器",
                     "link": "tools/dependency_inspector.html"
+                },
+                {
+                    "text": "Linter",
+                    "link": "tools/linter.html"
                 }
             ],
             "text": "内置工具"
@@ -319,6 +338,7 @@ export default {
                     "link": "examples/os_signals.html"
                 },
                 {
+                    "text": "文件系统事件",
                     "link": "examples/file_system_events.html"
                 },
                 {
