@@ -109,7 +109,7 @@ export default {
   head: <link rel="icon" type="image/png" href="/favicon.png" />,
   tools: {
     editOnGithub: true,
-    backToTop: true
+    backToTop: true,
   },
   sidebar: toc,
   nav: [
