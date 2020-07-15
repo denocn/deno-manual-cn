@@ -107,10 +107,10 @@ export default {
       text: "GitHub",
       link: "https://github.com/denocn/deno_manual",
     },
-//     {
-//       text: "社区",
-//       link: "http://deno.js.cn",
-//     },
+    // {
+    //   text: "社区",
+    //   link: "http://deno.js.cn",
+    // },
   ],
   ga: {
     id: "UA-123999279-4",
