@@ -94,7 +94,7 @@ export default {
     title: "Deno 中文手册",
     description: "Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。",
     github: "https://github.com/denocn/deno_manual",
-    head: React.createElement("link", { rel: "icon", type: "image/png", href: "/favicon.png" }),
+    head: React.createElement("link", { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }),
     tools: {
         editOnGithub: true,
         backToTop: true,
