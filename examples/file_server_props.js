@@ -1,7 +1,5 @@
-import Ga from '/_ga.js';
 import projectConfig from '/pagic.config.js';
 export default {
-    'ga': React.createElement(Ga, { id: "UA-123999279-4" }),
     'sidebar': [
         {
             "text": "Deno 中文手册",
