@@ -96,7 +96,7 @@ export default {
     github: "https://github.com/denocn/deno_manual",
     head: React.createElement("link", { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" }),
     tools: {
-        editOnGithub: true,
+        editOnGithub: false,
         backToTop: true,
     },
     sidebar: toc,
