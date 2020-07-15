@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "代理（Proxies）",
+        "link": "linking_to_external_code/proxies.html"
+    },
+    'next': {
+        "link": "standard_library.html",
+        "text": "标准库"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

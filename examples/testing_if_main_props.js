@@ -1,5 +1,10 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "文件系统事件",
+        "link": "examples/file_system_events.html"
+    },
+    'next': null,
     'sidebar': [
         {
             "text": "Deno 中文手册",

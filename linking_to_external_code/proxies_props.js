@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "完整性检查与锁定文件",
+        "link": "linking_to_external_code/integrity_checking.html"
+    },
+    'next': {
+        "text": "导入映射（Import maps）",
+        "link": "linking_to_external_code/import_maps.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

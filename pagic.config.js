@@ -90,13 +90,21 @@ export default {
         /\/toc\.ts/,
     ],
     theme: "docs",
-    plugins: ["sidebar", "script"],
+    plugins: ["sidebar", "prev_next"],
     title: "Deno 中文手册",
+    description: "Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。",
+    github: "https://github.com/denocn/deno_manual",
+    head: React.createElement("link", { rel: "icon", type: "image/png", href: "/favicon.png" }),
+    tools: {
+        editOnGithub: true,
+        backToTop: true,
+    },
     sidebar: toc,
     nav: [
         {
-            text: "GitHub",
-            link: "https://github.com/denocn/deno_manual",
+            text: "社区(备案中)",
+            link: "http://deno.js.cn",
+            target: "_blank",
         },
     ],
     ga: {

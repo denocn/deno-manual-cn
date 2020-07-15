@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "Linter",
+        "link": "tools/linter.html"
+    },
+    'next': {
+        "link": "contributing.html",
+        "text": "贡献"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

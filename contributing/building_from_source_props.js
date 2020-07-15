@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "link": "contributing.html",
+        "text": "贡献"
+    },
+    'next': {
+        "text": "测试和工具",
+        "link": "contributing/development_tools.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

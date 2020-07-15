@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "TCP echo",
+        "link": "examples/tcp_echo.html"
+    },
+    'next': {
+        "text": "检查与放弃权限",
+        "link": "examples/permissions.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

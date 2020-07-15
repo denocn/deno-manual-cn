@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "脚本安装器",
+        "link": "tools/script_installer.html"
+    },
+    'next': {
+        "text": "打包",
+        "link": "tools/bundler.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

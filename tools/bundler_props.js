@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "代码格式化",
+        "link": "tools/formatter.html"
+    },
+    'next': {
+        "text": "文档生成器",
+        "link": "tools/documentation_generator.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

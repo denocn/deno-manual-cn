@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "导入映射（Import maps）",
+        "link": "linking_to_external_code/import_maps.html"
+    },
+    'next': {
+        "link": "testing.html",
+        "text": "测试"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

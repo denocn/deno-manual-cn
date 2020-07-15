@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "稳定性",
+        "link": "runtime/stability.html"
+    },
+    'next': {
+        "text": "编译器 API",
+        "link": "runtime/compiler_apis.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

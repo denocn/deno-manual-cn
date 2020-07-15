@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "link": "getting_started.html",
+        "text": "入门"
+    },
+    'next': {
+        "text": "设置您的环境",
+        "link": "getting_started/setup_your_environment.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

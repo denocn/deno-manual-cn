@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "权限",
+        "link": "getting_started/permissions.html"
+    },
+    'next': {
+        "text": "WebAssembly 支持",
+        "link": "getting_started/webassembly.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

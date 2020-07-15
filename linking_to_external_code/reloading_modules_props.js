@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "link": "linking_to_external_code.html",
+        "text": "与外部代码连接"
+    },
+    'next': {
+        "text": "完整性检查与锁定文件",
+        "link": "linking_to_external_code/integrity_checking.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

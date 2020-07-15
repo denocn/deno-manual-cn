@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "程序生命周期",
+        "link": "runtime/program_lifecycle.html"
+    },
+    'next': {
+        "text": "Worker",
+        "link": "runtime/workers.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

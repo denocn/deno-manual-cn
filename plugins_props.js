@@ -1,5 +1,7 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': null,
+    'next': null,
     'sidebar': [
         {
             "text": "Deno 中文手册",

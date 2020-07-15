@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "使用 TypeScript",
+        "link": "getting_started/typescript.html"
+    },
+    'next': {
+        "link": "runtime.html",
+        "text": "运行时"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

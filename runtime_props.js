@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "WebAssembly 支持",
+        "link": "getting_started/webassembly.html"
+    },
+    'next': {
+        "text": "稳定性",
+        "link": "runtime/stability.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

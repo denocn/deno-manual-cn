@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "打包",
+        "link": "tools/bundler.html"
+    },
+    'next': {
+        "text": "依赖检查器",
+        "link": "tools/dependency_inspector.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

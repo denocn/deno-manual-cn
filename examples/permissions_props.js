@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "运行子进程",
+        "link": "examples/subprocess.html"
+    },
+    'next': {
+        "text": "处理系统信号",
+        "link": "examples/os_signals.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

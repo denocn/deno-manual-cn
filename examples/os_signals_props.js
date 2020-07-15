@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "检查与放弃权限",
+        "link": "examples/permissions.html"
+    },
+    'next': {
+        "text": "文件系统事件",
+        "link": "examples/file_system_events.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "编译器 API",
+        "link": "runtime/compiler_apis.html"
+    },
+    'next': {
+        "link": "linking_to_external_code.html",
+        "text": "与外部代码连接"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

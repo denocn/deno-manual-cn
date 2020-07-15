@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "调试器 (debugger)",
+        "link": "tools/debugger.html"
+    },
+    'next': {
+        "text": "代码格式化",
+        "link": "tools/formatter.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

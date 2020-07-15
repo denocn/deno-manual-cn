@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "重新加载特定的模块",
+        "link": "linking_to_external_code/reloading_modules.html"
+    },
+    'next': {
+        "text": "代理（Proxies）",
+        "link": "linking_to_external_code/proxies.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "Deno 风格指南",
+        "link": "contributing/style_guide.html"
+    },
+    'next': {
+        "link": "examples.html",
+        "text": "示例"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

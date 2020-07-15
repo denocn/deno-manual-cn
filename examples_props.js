@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "内部细节",
+        "link": "contributing/architecture.html"
+    },
+    'next': {
+        "text": "Unix cat",
+        "link": "examples/unix_cat.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

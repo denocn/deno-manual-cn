@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "处理系统信号",
+        "link": "examples/os_signals.html"
+    },
+    'next': {
+        "text": "测试当前文件是否为主程序",
+        "link": "examples/testing_if_main.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",

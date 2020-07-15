@@ -1,5 +1,13 @@
 import projectConfig from '/pagic.config.js';
 export default {
+    'prev': {
+        "text": "文档生成器",
+        "link": "tools/documentation_generator.html"
+    },
+    'next': {
+        "text": "Linter",
+        "link": "tools/linter.html"
+    },
     'sidebar': [
         {
             "text": "Deno 中文手册",
