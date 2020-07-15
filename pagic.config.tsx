@@ -1,3 +1,6 @@
+// @deno-types="https://deno.land/x/types/react/v16.13.1/react.d.ts"
+import React from 'https://dev.jspm.io/react@16.13.1';
+
 interface SidebarConfigItem {
   text?: string;
   link: string;
@@ -99,18 +102,22 @@ export default {
     /\/toc\.ts/,
   ],
   theme: "docs",
-  plugins: ["sidebar", "script"],
+  plugins: ["sidebar", 'prev_next'],
   title: "Deno 中文手册",
+  description: 'Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。',
+  github: 'https://github.com/denocn/deno_manual',
+  head: <link rel="icon" type="image/png" href="/favicon.png" />,
+  tools: {
+    editOnGithub: true,
+    backToTop: true
+  },
   sidebar: toc,
   nav: [
     {
-      text: "GitHub",
-      link: "https://github.com/denocn/deno_manual",
+      text: "社区(备案中)",
+      link: "http://deno.js.cn",
+      target: '_blank',
     },
-    // {
-    //   text: "社区",
-    //   link: "http://deno.js.cn",
-    // },
   ],
   ga: {
     id: "UA-123999279-4",
