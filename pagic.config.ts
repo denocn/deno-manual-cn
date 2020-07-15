@@ -99,18 +99,18 @@ export default {
     /\/toc\.ts/,
   ],
   theme: "docs",
-  plugins: ["sidebar", "script", "ga"],
-  title: "Deno 手册",
+  plugins: ["sidebar", "script"],
+  title: "Deno 中文手册",
   sidebar: toc,
   nav: [
     {
       text: "GitHub",
       link: "https://github.com/denocn/deno_manual",
     },
-    {
-      text: "社区",
-      link: "http://deno.js.cn",
-    },
+//     {
+//       text: "社区",
+//       link: "http://deno.js.cn",
+//     },
   ],
   ga: {
     id: "UA-123999279-4",
