@@ -114,8 +114,13 @@ export default {
   sidebar: toc,
   nav: [
     {
-      text: "社区(备案中)",
+      text: "社区",
       link: "http://deno.js.cn",
+      target: "_blank",
+    },
+    {
+      text: "安装",
+      link: "http://x.deno.js.cn",
       target: "_blank",
     },
   ],
