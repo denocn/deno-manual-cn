@@ -1,5 +1,5 @@
 // @deno-types="https://deno.land/x/types/react/v16.13.1/react.d.ts"
-import React from 'https://dev.jspm.io/react@16.13.1';
+import React from "https://dev.jspm.io/react@16.13.1";
 
 interface SidebarConfigItem {
   text?: string;
@@ -102,10 +102,10 @@ export default {
     /\/toc\.ts/,
   ],
   theme: "docs",
-  plugins: ["sidebar", 'prev_next'],
+  plugins: ["sidebar", "prev_next"],
   title: "Deno 中文手册",
-  description: 'Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。',
-  github: 'https://github.com/denocn/deno_manual',
+  description: "Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。",
+  github: "https://github.com/denocn/deno_manual",
   head: <link rel="icon" type="image/png" href="/favicon.png" />,
   tools: {
     editOnGithub: true,
@@ -116,7 +116,7 @@ export default {
     {
       text: "社区(备案中)",
       link: "http://deno.js.cn",
-      target: '_blank',
+      target: "_blank",
     },
   ],
   ga: {
