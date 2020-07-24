@@ -80,6 +80,7 @@ const toc = [
 ];
 export default {
     srcDir: ".",
+    root: "/",
     ignore: [
         "/LICENSE",
     ],
