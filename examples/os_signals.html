@@ -14,7 +14,7 @@
 <p>这个程序使用了不稳定的 Deno 特性。更多信息请查阅
 <a href="../runtime/stability.html">稳定性</a></p>
 </blockquote>
-<p><a href="https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/js/lib.deno.unstable.d.ts#Deno.signal">API 参考手册</a></p>
+<p><a href="https://doc.deno.land/https/raw.githubusercontent.com/denoland/deno/master/cli/dts/lib.deno.unstable.d.ts#Deno.signal">API 参考手册</a></p>
 <p>您可以使用 <code>Deno.signal()</code> 函数来处理系统信号。</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span class="token keyword">const</span> _ <span class="token keyword">of</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">signal</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">Signal</span></span><span class="token punctuation">.</span><span class="token constant">SIGINT</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"interrupted!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

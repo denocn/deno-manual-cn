@@ -109,7 +109,7 @@
       <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Panic!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token known-class-name class-name">Error</span><span class="token punctuation">,</span>
-    <span class="token string">"Panic!"</span>
+    <span class="token string">"Panic!"</span><span class="token punctuation">,</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -122,7 +122,7 @@
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token known-class-name class-name">Error</span><span class="token punctuation">,</span>
-    <span class="token string">"Panic! Threw Error"</span>
+    <span class="token string">"Panic! Threw Error"</span><span class="token punctuation">,</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">assertThrowsAsync</span><span class="token punctuation">(</span>
@@ -130,7 +130,7 @@
       <span class="token keyword">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"Panic! Reject Error"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token known-class-name class-name">Error</span><span class="token punctuation">,</span>
-    <span class="token string">"Panic! Reject Error"</span>
+    <span class="token string">"Panic! Reject Error"</span><span class="token punctuation">,</span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>

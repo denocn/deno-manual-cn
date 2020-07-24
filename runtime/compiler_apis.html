@@ -33,7 +33,7 @@
 <p>我们希望 map 包含 4 个 “文件（files）” ，分别命名为 <code>/foo.js.map</code>，<code>/foo.js</code>，<code>/bar.js.map</code>，和 <code>/bar.js</code>。</p>
 <p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token punctuation">[</span>diagnostics<span class="token punctuation">,</span> emitMap<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">compile</span><span class="token punctuation">(</span>
-  <span class="token string">"<a class="token url-link" href="https://deno.land/std/examples/welcome.ts">https://deno.land/std/examples/welcome.ts</a>"</span>
+  <span class="token string">"<a class="token url-link" href="https://deno.land/std/examples/welcome.ts">https://deno.land/std/examples/welcome.ts</a>"</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>在这种情况下，<code>emitMap</code> 将包含一个 <code>console.log()</code> 语句。</p>
@@ -54,7 +54,7 @@
 <p>我们希望 <code>emit</code> 是一个 ES 模块的文本，它将包含两个模块的输出源。</p>
 <p>当不提供资源时，您可以使用本地或远程模块，就像在命令行上做的那样。所以您可以这样做:</p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> <span class="token punctuation">[</span>diagnostics<span class="token punctuation">,</span> emit<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">bundle</span><span class="token punctuation">(</span>
-  <span class="token string">"<a class="token url-link" href="https://deno.land/std/http/server.ts">https://deno.land/std/http/server.ts</a>"</span>
+  <span class="token string">"<a class="token url-link" href="https://deno.land/std/http/server.ts">https://deno.land/std/http/server.ts</a>"</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>在这种情况下，<code>emit</code> 将是一个自包含的 JavaScript ES 模块，并解析了所有依赖项，导出与源模块相同的导出。</p>
@@ -79,7 +79,7 @@
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
     lib<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"dom"</span><span class="token punctuation">,</span> <span class="token string">"esnext"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>有关 TypeScript 支持的所有库的列表，请参见 <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html"><code>lib</code> 编译器选项</a>。
