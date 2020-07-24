@@ -93,13 +93,7 @@ const toc: SidebarConfig = [
 export default {
   srcDir: ".",
   ignore: [
-    /\/public\//,
-    /\/\.github\//,
-    /\/\.git\//,
-    /\/\.vscode\//,
-    /\/LICENSE/,
-    /\/pagic\.config\.ts/,
-    /\/toc\.ts/,
+    "/LICENSE",
   ],
   theme: "docs",
   plugins: ["sidebar", "prev_next"],
