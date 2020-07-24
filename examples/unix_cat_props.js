@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "examples/unix_cat.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "examples/unix_cat.html",

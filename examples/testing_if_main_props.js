@@ -251,7 +251,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "examples/testing_if_main.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "examples/testing_if_main.html",

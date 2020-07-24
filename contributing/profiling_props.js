@@ -248,7 +248,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "contributing/profiling.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "contributing/profiling.html",

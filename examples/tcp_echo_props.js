@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "examples/tcp_echo.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "examples/tcp_echo.html",

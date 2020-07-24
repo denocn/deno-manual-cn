@@ -251,7 +251,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "README.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "index.html",

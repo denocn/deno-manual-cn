@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "getting_started/webassembly.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "getting_started/webassembly.html",

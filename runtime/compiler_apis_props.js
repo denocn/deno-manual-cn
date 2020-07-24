@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "runtime/compiler_apis.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "runtime/compiler_apis.html",

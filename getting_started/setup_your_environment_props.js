@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "getting_started/setup_your_environment.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "getting_started/setup_your_environment.html",

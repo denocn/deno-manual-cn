@@ -254,7 +254,7 @@ export default {
             "pagePath": "examples.md"
         }
     ],
-    config: { "srcDir": "src", "publicDir": "public", "base": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig },
     'pagePath': "contributing/building_from_source.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "contributing/building_from_source.html",
