@@ -92,6 +92,7 @@ const toc: SidebarConfig = [
 
 export default {
   srcDir: ".",
+  root: "/",
   ignore: [
     "/LICENSE",
   ],
