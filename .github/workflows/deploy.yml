@@ -15,14 +15,14 @@ jobs:
       - name: Setup Deno
         uses: denolib/setup-deno@master
         with:
-          deno-version: 1.2.1
+          deno-version: 1.5.2
 
       - name: Format
         run: deno fmt --check
 
       - name: Build
         run: |
-          deno run --unstable --allow-read --allow-write --allow-net --no-check https://deno.land/x/pagic@v0.8.1/mod.ts build
+          deno run --unstable --allow-read --allow-write --allow-net --no-check https://deno.land/x/pagic@v0.12.0/mod.ts build
 
       - name: Deploy
         if: |
