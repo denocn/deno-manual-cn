@@ -1,5 +1,5 @@
-// @deno-types="https://deno.land/x/types/react/v16.13.1/react.d.ts"
-import React from "https://dev.jspm.io/react@16.13.1";
+// @deno-types="https://cdn.pagic.org/@types/react@16.9.50/index.d.ts"
+import * as React from 'https://cdn.pagic.org/react@16.13.1/esnext/react.development.js';
 
 interface SidebarConfigItem {
   text?: string;
