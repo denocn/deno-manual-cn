@@ -1,4 +1,4 @@
-import { React } from 'https://deno.land/x/pagic@v0.12.0/mod.ts';
+import { React } from "https://deno.land/x/pagic@v0.12.0/mod.ts";
 
 import type { PagicConfigSidebar } from "https://deno.land/x/pagic@v0.12.0/src/plugins/sidebar.tsx";
 
