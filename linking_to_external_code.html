@@ -1,7 +1,7 @@
 <!doctype html><html class="" data-reactroot=""><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
 <title data-react-helmet="true">与外部代码连接 · Deno 中文手册</title>
-<link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/><link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
 <script data-react-helmet="true" >
     const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (shouldSetIsDark) {
@@ -18,7 +18,7 @@
 <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Asserted! ✓"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Asserted! ✓"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>尝试运行一下：</p>
 <pre class="language-shell"><code class="language-shell">$ deno run test.ts
@@ -38,7 +38,7 @@ Asserted<span class="token operator">!</span> ✓
 </ul>
 <p>如果失败，该路径设置为 <code>$HOME/.deno</code>。</p>
 <h2 id="faq">FAQ<a class="anchor" href="#faq">§</a></h2>
-<h3 id="%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC%EF%BC%9F">如何导入特定版本？<a class="anchor" href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC%EF%BC%9F">§</a></h3>
+<h3 id="%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC">如何导入特定版本？<a class="anchor" href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC">§</a></h3>
 <p>只需在 URL 中指定版本。举个例子，这个 URL 指定了要运行的版本 <code>https://unpkg.com/liltest@0.0.5/dist/liltest.js</code>。</p>
 <h3 id="%E5%88%B0%E5%A4%84%E5%AF%BC%E5%85%A5-url-%E4%BC%BC%E4%B9%8E%E5%BE%88%E9%BA%BB%E7%83%A6">到处导入 URL 似乎很麻烦<a class="anchor" href="#%E5%88%B0%E5%A4%84%E5%AF%BC%E5%85%A5-url-%E4%BC%BC%E4%B9%8E%E5%BE%88%E9%BA%BB%E7%83%A6">§</a></h3>
 <blockquote>
@@ -60,9 +60,9 @@ Asserted<span class="token operator">!</span> ✓
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> assertEquals<span class="token punctuation">,</span> runTests<span class="token punctuation">,</span> test <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./deps.ts"</span><span class="token punctuation">;</span>
 </code></pre>
 <p>这种设计避免了由包管理软件、集中的代码存储库和多余的文件格式所产生的大量复杂性。</p>
-<h3 id="%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url%EF%BC%9F">如何信任可能更改的 URL？<a class="anchor" href="#%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url%EF%BC%9F">§</a></h3>
+<h3 id="%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url">如何信任可能更改的 URL？<a class="anchor" href="#%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url">§</a></h3>
 <p>使用 <code>--lock</code> 命令行选项，通过一个锁文件 (lock file)，您可以确保从一个 URL 下载的代码和初始开发时一样。更多信息请看 <a href="./linking_to_external_code/integrity_checking.html">这里</a>。</p>
-<h3 id="%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8%E3%80%82">如果依赖宕机怎么办？源代码将不再可用。<a class="anchor" href="#%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8%E3%80%82">§</a></h3>
+<h3 id="%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8">如果依赖宕机怎么办？源代码将不再可用。<a class="anchor" href="#%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8">§</a></h3>
 <p>像上面一样，这是 <em>任何</em> 远程依赖系统都要面对的问题。</p>
 <p>依赖外部服务在开发时很方便，但在生产环境很脆弱。生产级软件总是应该打包 (vendor) 所有依赖。</p>
 <p>在 Node 中，这需要将 <code>node_modules</code> 检入版本控制系统。</p>
@@ -76,4 +76,4 @@ Asserted<span class="token operator">!</span> ✓
 <span class="token comment"># 将缓存目录检入版本控制</span>
 <span class="token function">git</span> <span class="token function">add</span> -u deno_dir
 <span class="token function">git</span> commit
-</code></pre></article><div class="prev_next"><a class="prev button" href="/runtime/workers.html">«  <!-- -->Worker</a><a class="next button" href="/linking_to_external_code/reloading_modules.html">重新加载特定的模块<!-- -->  »</a></div></div><div class="main_toc_container nav_link_container"><div class="main_toc"><aside><nav class="toc"><ol><li><a href="#faq">FAQ</a><ol><li><a href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC%EF%BC%9F">如何导入特定版本？</a></li><li><a href="#%E5%88%B0%E5%A4%84%E5%AF%BC%E5%85%A5-url-%E4%BC%BC%E4%B9%8E%E5%BE%88%E9%BA%BB%E7%83%A6">到处导入 URL 似乎很麻烦</a></li><li><a href="#%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url%EF%BC%9F">如何信任可能更改的 URL？</a></li><li><a href="#%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%EF%BC%9F%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8%E3%80%82">如果依赖宕机怎么办？源代码将不再可用。</a></li></ol></li></ol></nav></aside></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script crossorigin="anonymous" src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+</code></pre></article><div class="prev_next"><a class="prev button" href="/runtime/workers.html">«  <!-- -->Worker</a><a class="next button" href="/linking_to_external_code/reloading_modules.html">重新加载特定的模块<!-- -->  »</a></div></div><div class="main_toc_container nav_link_container"><div class="main_toc"><aside><nav class="toc"><ol><li><a href="#faq">FAQ</a><ol><li><a href="#%E5%A6%82%E4%BD%95%E5%AF%BC%E5%85%A5%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC">如何导入特定版本？</a></li><li><a href="#%E5%88%B0%E5%A4%84%E5%AF%BC%E5%85%A5-url-%E4%BC%BC%E4%B9%8E%E5%BE%88%E9%BA%BB%E7%83%A6">到处导入 URL 似乎很麻烦</a></li><li><a href="#%E5%A6%82%E4%BD%95%E4%BF%A1%E4%BB%BB%E5%8F%AF%E8%83%BD%E6%9B%B4%E6%94%B9%E7%9A%84-url">如何信任可能更改的 URL？</a></li><li><a href="#%E5%A6%82%E6%9E%9C%E4%BE%9D%E8%B5%96%E5%AE%95%E6%9C%BA%E6%80%8E%E4%B9%88%E5%8A%9E%E6%BA%90%E4%BB%A3%E7%A0%81%E5%B0%86%E4%B8%8D%E5%86%8D%E5%8F%AF%E7%94%A8">如果依赖宕机怎么办？源代码将不再可用。</a></li></ol></li></ol></nav></aside></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

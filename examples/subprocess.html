@@ -1,7 +1,7 @@
 <!doctype html><html class="" data-reactroot=""><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
 <title data-react-helmet="true">运行子进程 · Deno 中文手册</title>
-<link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/><link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
 <script data-react-helmet="true" >
     const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (shouldSetIsDark) {
@@ -13,12 +13,12 @@
 <p><a href="https://doc.deno.land/https/github.com/denoland/deno/releases/latest/download/lib.deno.d.ts#Deno.run">API 参考手册</a></p>
 <p>示例：</p>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// 创建子进程</span>
-<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">const</span> p <span class="token operator">=</span> Deno<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   cmd<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"echo"</span><span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">// 等待完成</span>
-<span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token method function property-access">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>运行</p>
 <pre class="language-shell"><code class="language-shell">$ deno run --allow-run ./subprocess_simple.ts
@@ -26,32 +26,32 @@ hello
 </code></pre>
 <p><code>window.onload</code> 被赋值为一个函数，它将会在主脚本加载后被调用，和浏览器的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload">onload</a> 一样，可以用于主入口点。</p>
 <p>默认情况下，当您调用 <code>Deno.run()</code> 时，子进程将继承父进程的标准流。如果您想要和子进程通信，可以使用 <code>&quot;piped&quot;</code> 选项。</p>
-<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> fileNames <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token property-access">args</span><span class="token punctuation">;</span>
+<pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> fileNames <span class="token operator">=</span> Deno<span class="token punctuation">.</span>args<span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> p <span class="token operator">=</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">const</span> p <span class="token operator">=</span> Deno<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   cmd<span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"deno"</span><span class="token punctuation">,</span>
     <span class="token string">"run"</span><span class="token punctuation">,</span>
     <span class="token string">"--allow-read"</span><span class="token punctuation">,</span>
     <span class="token string">"<a class="token url-link" href="https://deno.land/std/examples/cat.ts">https://deno.land/std/examples/cat.ts</a>"</span><span class="token punctuation">,</span>
-    <span class="token spread operator">...</span>fileNames<span class="token punctuation">,</span>
+    <span class="token operator">...</span>fileNames<span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
   stdout<span class="token operator">:</span> <span class="token string">"piped"</span><span class="token punctuation">,</span>
   stderr<span class="token operator">:</span> <span class="token string">"piped"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token punctuation">{</span> code <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token method function property-access">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> code <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">if</span> <span class="token punctuation">(</span>code <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> rawOutput <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token method function property-access">output</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">await</span> <span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token property-access">stdout</span><span class="token punctuation">.</span><span class="token method function property-access">write</span><span class="token punctuation">(</span>rawOutput<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> rawOutput <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token function">output</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> Deno<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>rawOutput<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> rawError <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token method function property-access">stderrOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">const</span> errorString <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token maybe-class-name">TextDecoder</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">decode</span><span class="token punctuation">(</span>rawError<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>errorString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> rawError <span class="token operator">=</span> <span class="token keyword">await</span> p<span class="token punctuation">.</span><span class="token function">stderrOutput</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> errorString <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TextDecoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">decode</span><span class="token punctuation">(</span>rawError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>errorString<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">exit</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Deno<span class="token punctuation">.</span><span class="token function">exit</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>运行</p>
 <pre class="language-shell"><code class="language-shell">$ deno run --allow-run ./subprocess.ts <span class="token operator">&lt;</span>somefile<span class="token operator">></span>
@@ -63,4 +63,4 @@ Uncaught NotFound: No such <span class="token function">file</span> or directory
     at DenoError <span class="token punctuation">(</span>deno/js/errors.ts:22:5<span class="token punctuation">)</span>
     at maybeError <span class="token punctuation">(</span>deno/js/errors.ts:41:12<span class="token punctuation">)</span>
     at handleAsyncMsgFromRust <span class="token punctuation">(</span>deno/js/dispatch.ts:27:17<span class="token punctuation">)</span>
-</code></pre></article><div class="prev_next"><a class="prev button" href="/examples/tcp_echo.html">«  <!-- -->TCP echo</a><a class="next button" href="/examples/permissions.html">检查与放弃权限<!-- -->  »</a></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script crossorigin="anonymous" src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+</code></pre></article><div class="prev_next"><a class="prev button" href="/examples/tcp_echo.html">«  <!-- -->TCP echo</a><a class="next button" href="/examples/permissions.html">检查与放弃权限<!-- -->  »</a></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

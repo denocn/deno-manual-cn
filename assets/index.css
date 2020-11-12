@@ -105,6 +105,13 @@ header li a:hover {
   color: var(--color-primary);
   text-decoration: none;
 }
+header select {
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--font-size);
+  border: 0;
+  height: 2rem;
+}
 
 .toggle_dark {
   cursor: pointer;
@@ -206,7 +213,8 @@ header li a:hover {
   display: flex;
   justify-content: center;
 }
-.sidebar + .main {
+.sidebar + .main,
+.sidebar ~ footer {
   margin-left: var(--width-sidebar);
 }
 .main_article {
@@ -214,6 +222,7 @@ header li a:hover {
   padding: 0 1rem;
   width: 44rem;
   max-width: 44rem;
+  word-wrap: break-word;
 }
 article.loading {
   min-height: calc(100vh - var(--height-header));
@@ -245,9 +254,7 @@ h6:hover .anchor {
 .prev_next {
   display: flex;
   align-items: stretch;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--color-border);
+  margin-top: 3rem;
 }
 .prev_next a {
   width: calc(50% - 1rem);
@@ -272,6 +279,34 @@ h6:hover .anchor {
 }
 .prev_next .prev + .next {
   margin-left: 1rem;
+}
+/* #endregion */
+
+/* #region Posts */
+.main_posts {
+  padding: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+}
+.main_posts a {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+.main_posts li {
+  margin: 0.5rem 0 0;
+}
+.main_posts time {
+  color: var(--color-text-muted);
+  margin-right: 1rem;
+  font-size: var(--font-size-small);
+}
+/* #endregion */
+
+/* #region Post */
+.main_post_meta {
+  margin: 1rem 0 2rem;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-small);
 }
 /* #endregion */
 
@@ -317,7 +352,7 @@ footer {
   text-align: center;
   color: var(--color-text-muted);
   font-size: var(--font-size-small);
-  padding: 2rem 0;
+  padding: 3rem 0;
 }
 /* #endregion */
 
@@ -331,6 +366,10 @@ footer {
 }
 .tools a {
   margin-top: 0.5rem;
+  background-color: var(--color-background-sidebar);
+}
+.tools a:hover {
+  background-color: var(--color-background-faded);
 }
 /* #endregion */
 
@@ -425,7 +464,8 @@ footer {
   header li:last-child {
     margin-right: 0.5rem;
   }
-  .sidebar + .main {
+  .sidebar + .main,
+  .sidebar ~ footer {
     margin-left: 0;
   }
   .anchor {
@@ -453,6 +493,10 @@ footer {
   pre[class*='language-'] {
     margin-left: -1rem !important;
     margin-right: -1rem !important;
+  }
+  li pre[class*='language-'],
+  blockquote pre[class*='language-'] {
+    margin-left: 0 !important;
   }
 }
 /* #endregion */

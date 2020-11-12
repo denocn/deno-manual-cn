@@ -1,7 +1,7 @@
 <!doctype html><html class="" data-reactroot=""><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
 <title data-react-helmet="true">内部细节 · Deno 中文手册</title>
-<link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/><link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
 <script data-react-helmet="true" >
     const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (shouldSetIsDark) {
@@ -37,7 +37,7 @@
 </tr>
 <tr>
 <td style="text-align:right">用户空间: libc++ / glib / boost</td>
-<td style="text-align:left">https://deno.land/std/</td>
+<td style="text-align:left"><a href="https://deno.land/std/">https://deno.land/std/</a></td>
 </tr>
 <tr>
 <td style="text-align:right">/proc/$$/stat</td>
@@ -49,15 +49,15 @@
 </tr>
 </tbody>
 </table>
-<h3 id="%E8%B5%84%E6%BA%90-(resources)">资源 (Resources)<a class="anchor" href="#%E8%B5%84%E6%BA%90-(resources)">§</a></h3>
+<h3 id="%E8%B5%84%E6%BA%90-resources">资源 (Resources)<a class="anchor" href="#%E8%B5%84%E6%BA%90-resources">§</a></h3>
 <p>资源（Resources)，又称 <code>rid</code>，是 Deno 版本的文件描述符。它们是一些整数数值，用来指代打开的文件、套接字 (sockets) 和其他概念。基于 <code>rid</code>，Deno 能够查询系统中有多少个打开的资源，这在测试时很有用。</p>
-<pre class="language-ts"><code class="language-ts"><span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="language-ts"><code class="language-ts"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Deno<span class="token punctuation">.</span><span class="token function">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// { 0: "stdin", 1: "stdout", 2: "stderr" }</span>
-<span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">close</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token maybe-class-name">Deno</span><span class="token punctuation">.</span><span class="token method function property-access">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Deno<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Deno<span class="token punctuation">.</span><span class="token function">resources</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// { 1: "stdout", 2: "stderr" }</span>
 </code></pre>
-<h3 id="%E6%8C%87%E6%A0%87-(metrics)">指标 (Metrics)<a class="anchor" href="#%E6%8C%87%E6%A0%87-(metrics)">§</a></h3>
+<h3 id="%E6%8C%87%E6%A0%87-metrics">指标 (Metrics)<a class="anchor" href="#%E6%8C%87%E6%A0%87-metrics">§</a></h3>
 <p>指标 (Metrics) 是 Deno 用于各种统计数据的内部计数器。</p>
 <pre class="language-shell"><code class="language-shell"><span class="token operator">></span> console.table<span class="token punctuation">(</span>Deno.metrics<span class="token punctuation">(</span><span class="token punctuation">))</span>
 ┌──────────────────┬────────┐
@@ -71,4 +71,4 @@
 └──────────────────┴────────┘
 </code></pre>
 <h2 id="%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">架构示意图<a class="anchor" href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">§</a></h2>
-<p><img src="schematic_v0.2.png" alt="架构示意图"></p></article><div class="prev_next"><a class="prev button" href="/contributing/style_guide.html">«  <!-- -->Deno 风格指南</a><a class="next button" href="/examples.html">示例<!-- -->  »</a></div></div><div class="main_toc_container nav_link_container"><div class="main_toc"><aside><nav class="toc"><ol><li><a href="#deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">Deno 和 Linux 类比</a><ol><li><a href="#%E8%B5%84%E6%BA%90-(resources)">资源 (Resources)</a></li><li><a href="#%E6%8C%87%E6%A0%87-(metrics)">指标 (Metrics)</a></li></ol></li><li><a href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">架构示意图</a></li></ol></nav></aside></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script crossorigin="anonymous" src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+<p><img src="schematic_v0.2.png" alt="架构示意图"></p></article><div class="prev_next"><a class="prev button" href="/contributing/style_guide.html">«  <!-- -->Deno 风格指南</a><a class="next button" href="/examples.html">示例<!-- -->  »</a></div></div><div class="main_toc_container nav_link_container"><div class="main_toc"><aside><nav class="toc"><ol><li><a href="#deno-%E5%92%8C-linux-%E7%B1%BB%E6%AF%94">Deno 和 Linux 类比</a><ol><li><a href="#%E8%B5%84%E6%BA%90-resources">资源 (Resources)</a></li><li><a href="#%E6%8C%87%E6%A0%87-metrics">指标 (Metrics)</a></li></ol></li><li><a href="#%E6%9E%B6%E6%9E%84%E7%A4%BA%E6%84%8F%E5%9B%BE">架构示意图</a></li></ol></nav></aside></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

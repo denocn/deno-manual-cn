@@ -38,17 +38,22 @@ textarea {
 code,
 kbd,
 samp,
-pre {
+pre,
+time {
   font-family: var(--font-family-monospace);
 }
 
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
+h4 {
   margin: 2rem 0 0 0;
+}
+h5 {
+  margin: 1.5rem 0 0 0;
+}
+h6 {
+  margin: 1rem 0 0 0;
 }
 p,
 blockquote,
@@ -144,7 +149,7 @@ blockquote > *:first-child {
 
 ul,
 ol {
-  padding: 0 0 0 2rem;
+  padding: 0 0 0 1.5em;
 }
 dt,
 dd,
@@ -187,6 +192,7 @@ sup {
 address,
 time {
   font-style: normal;
+  color: var(--color-text-muted);
 }
 mark {
   background-color: yellow;

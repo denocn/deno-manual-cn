@@ -1,7 +1,7 @@
 <!doctype html><html class="" data-reactroot=""><head><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="Deno 中文手册，Deno 中文教程，Deno 入门手册，Deno 入门指南。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
 <title data-react-helmet="true">导入映射（Import maps） · Deno 中文手册</title>
-<link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/><link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
 <script data-react-helmet="true" >
     const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (shouldSetIsDark) {
@@ -34,7 +34,7 @@
 <p><strong>color.ts</strong></p>
 <pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> red <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"fmt/colors.ts"</span><span class="token punctuation">;</span>
 
-<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token function">red</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">red</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>运行：</p>
 <pre class="language-shell"><code class="language-shell">$ deno run --importmap<span class="token operator">=</span>import_map.json --unstable color.ts
@@ -50,7 +50,7 @@
 </code></pre>
 <pre class="language-ts"><code class="language-ts"><span class="token comment">// main.ts</span>
 
-<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token maybe-class-name">MyUtil</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"/util.ts"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> MyUtil <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"/util.ts"</span><span class="token punctuation">;</span>
 </code></pre>
 <p>您可以映射一个不同的目录（比如 src）：</p>
 <pre class="language-json"><code class="language-json"><span class="token comment">// import_map.json</span>
@@ -60,4 +60,4 @@
     <span class="token property">"/"</span><span class="token operator">:</span> <span class="token string">"./src"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre></article><div class="prev_next"><a class="prev button" href="/linking_to_external_code/proxies.html">«  <!-- -->代理（Proxies）</a><a class="next button" href="/standard_library.html">标准库<!-- -->  »</a></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script crossorigin="anonymous" src="https://unpkg.com/react@16.13.1/umd/react.production.min.js"></script><script crossorigin="anonymous" src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+</code></pre></article><div class="prev_next"><a class="prev button" href="/linking_to_external_code/proxies.html">«  <!-- -->代理（Proxies）</a><a class="next button" href="/standard_library.html">标准库<!-- -->  »</a></div></div></section><footer>Powered by<!-- --> <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><div class="tools flex_center hide_on_mobile"><a class="czs-angle-up-l button" href="#" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></a></div><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
