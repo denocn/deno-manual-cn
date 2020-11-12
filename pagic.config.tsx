@@ -1,94 +1,89 @@
-// @deno-types="https://cdn.pagic.org/@types/react@16.9.50/index.d.ts"
-import * as React from "https://cdn.pagic.org/react@16.13.1/esnext/react.development.js";
+import { React } from 'https://deno.land/x/pagic@v0.12.0/mod.ts';
 
-interface SidebarConfigItem {
-  text?: string;
-  link: string;
-  children?: SidebarConfig;
-}
+import type { PagicConfigSidebar } from "https://deno.land/x/pagic@v0.12.0/src/plugins/sidebar.tsx";
 
-type SidebarConfig = (SidebarConfigItem | string)[];
-
-const toc: SidebarConfig = [
-  "README.md",
-  "introduction.md",
-  {
-    link: "getting_started.md",
-    children: [
-      "getting_started/installation.md",
-      "getting_started/setup_your_environment.md",
-      "getting_started/first_steps.md",
-      "getting_started/command_line_interface.md",
-      "getting_started/permissions.md",
-      "getting_started/typescript.md",
-      "getting_started/webassembly.md",
-    ],
-  },
-  {
-    link: "runtime.md",
-    children: [
-      "runtime/stability.md",
-      "runtime/program_lifecycle.md",
-      "runtime/compiler_apis.md",
-      "runtime/workers.md",
-    ],
-  },
-  {
-    link: "linking_to_external_code.md",
-    children: [
-      "linking_to_external_code/reloading_modules.md",
-      "linking_to_external_code/integrity_checking.md",
-      "linking_to_external_code/proxies.md",
-      "linking_to_external_code/import_maps.md",
-    ],
-  },
-  {
-    link: "standard_library.md",
-  },
-  {
-    link: "testing.md",
-    children: [
-      "testing/assertions.md",
-    ],
-  },
-  {
-    link: "tools.md",
-    children: [
-      "tools/debugger.md",
-      "tools/script_installer.md",
-      "tools/formatter.md",
-      "tools/bundler.md",
-      "tools/documentation_generator.md",
-      "tools/dependency_inspector.md",
-      "tools/linter.md",
-    ],
-  },
-  {
-    link: "embedding_deno.md",
-  },
-  {
-    link: "contributing.md",
-    children: [
-      "contributing/building_from_source.md",
-      "contributing/development_tools.md",
-      "contributing/style_guide.md",
-      "contributing/architecture.md",
-    ],
-  },
-  {
-    link: "examples.md",
-    children: [
-      "examples/unix_cat.md",
-      "examples/file_server.md",
-      "examples/tcp_echo.md",
-      "examples/subprocess.md",
-      "examples/permissions.md",
-      "examples/os_signals.md",
-      "examples/file_system_events.md",
-      "examples/testing_if_main.md",
-    ],
-  },
-];
+const toc: PagicConfigSidebar = {
+  "/": [
+    "README.md",
+    "introduction.md",
+    {
+      link: "getting_started.md",
+      children: [
+        "getting_started/installation.md",
+        "getting_started/setup_your_environment.md",
+        "getting_started/first_steps.md",
+        "getting_started/command_line_interface.md",
+        "getting_started/permissions.md",
+        "getting_started/typescript.md",
+        "getting_started/webassembly.md",
+      ],
+    },
+    {
+      link: "runtime.md",
+      children: [
+        "runtime/stability.md",
+        "runtime/program_lifecycle.md",
+        "runtime/compiler_apis.md",
+        "runtime/workers.md",
+      ],
+    },
+    {
+      link: "linking_to_external_code.md",
+      children: [
+        "linking_to_external_code/reloading_modules.md",
+        "linking_to_external_code/integrity_checking.md",
+        "linking_to_external_code/proxies.md",
+        "linking_to_external_code/import_maps.md",
+      ],
+    },
+    {
+      link: "standard_library.md",
+    },
+    {
+      link: "testing.md",
+      children: [
+        "testing/assertions.md",
+      ],
+    },
+    {
+      link: "tools.md",
+      children: [
+        "tools/debugger.md",
+        "tools/script_installer.md",
+        "tools/formatter.md",
+        "tools/bundler.md",
+        "tools/documentation_generator.md",
+        "tools/dependency_inspector.md",
+        "tools/linter.md",
+      ],
+    },
+    {
+      link: "embedding_deno.md",
+    },
+    {
+      link: "contributing.md",
+      children: [
+        "contributing/building_from_source.md",
+        "contributing/development_tools.md",
+        "contributing/style_guide.md",
+        "contributing/architecture.md",
+      ],
+    },
+    {
+      link: "examples.md",
+      children: [
+        "examples/unix_cat.md",
+        "examples/file_server.md",
+        "examples/tcp_echo.md",
+        "examples/subprocess.md",
+        "examples/permissions.md",
+        "examples/os_signals.md",
+        "examples/file_system_events.md",
+        "examples/testing_if_main.md",
+      ],
+    },
+  ],
+};
 
 export default {
   srcDir: ".",
